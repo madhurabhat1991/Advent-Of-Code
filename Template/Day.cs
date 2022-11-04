@@ -42,7 +42,7 @@ namespace Template
             Input = ProcessInput(input);
 
             // Call and display output
-            Console.WriteLine("Part One Example");
+            Console.WriteLine("Part One Example " + ex);
             Console.WriteLine(PartOne(Example));
             Console.WriteLine();
 
@@ -50,7 +50,7 @@ namespace Template
             Console.WriteLine(PartOne(Input));
             Console.WriteLine();
 
-            Console.WriteLine("Part Two Example");
+            Console.WriteLine("Part Two Example " + ex);
             Console.WriteLine(PartTwo(Example));
             Console.WriteLine();
 
