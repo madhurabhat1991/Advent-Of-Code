@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Helpers;
 
 namespace _2021
 {
@@ -9,15 +10,11 @@ namespace _2021
     {
         public static void Main(string[] args)
         {
-            var ex = "";
-
             var challenge = new Day01.Day01();
             var day = "01";
+            var ex = "";
 
-
-            var example = File.ReadAllLines($"Day{day}\\example{ex}.txt");
-            var input = File.ReadAllLines($"Day{day}\\input.txt");
-            challenge.Main(example, input);
+            challenge.Main(day, ex);
         }
     }
 }
