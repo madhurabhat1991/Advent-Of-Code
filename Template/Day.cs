@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using System.Text;
 using Helpers;
+using System.Linq;
 
 namespace Template
 {
-    public abstract class Day<T, T1>
+    /// <summary>
+    /// Abstract Day
+    /// </summary>
+    /// <typeparam name="T">Input</typeparam>
+    /// <typeparam name="T1">Output of PartOne</typeparam>
+    /// <typeparam name="T2">Output of PartTwo</typeparam>
+    public abstract class Day<T, T1, T2>
     {
         /// <summary>
         /// An example of input
         /// </summary>
-        public T Example { get; set; }
+        T Example { get; set; }
 
         /// <summary>
         /// Real input of problem
         /// </summary>
-        public T Input { get; set; }
+        T Input { get; set; }
 
         /// <summary>
         /// Main method
@@ -35,19 +42,19 @@ namespace Template
             Input = ProcessInput(input);
 
             // Call and display output
-            Console.WriteLine("PartOne Example");
+            Console.WriteLine("Part One Example");
             Console.WriteLine(PartOne(Example));
             Console.WriteLine();
 
-            Console.WriteLine("PartOne Input");
+            Console.WriteLine("Part One Input");
             Console.WriteLine(PartOne(Input));
             Console.WriteLine();
 
-            Console.WriteLine("PartTwo Example");
+            Console.WriteLine("Part Two Example");
             Console.WriteLine(PartTwo(Example));
             Console.WriteLine();
 
-            Console.WriteLine("PartTwo Input");
+            Console.WriteLine("Part Two Input");
             Console.WriteLine(PartTwo(Input));
             Console.WriteLine();
         }
@@ -71,6 +78,6 @@ namespace Template
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public abstract T1 PartTwo(T input);
+        public abstract T2 PartTwo(T input);
     }
 }
