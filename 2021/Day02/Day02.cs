@@ -7,6 +7,8 @@ namespace _2021.Day02
 {
     public class Day02 : Day<string[], long, long>
     {
+        public override string DayNumber { get { return "02"; } }
+
         public override long PartOne(string[] input)
         {
             long horizontal = 0;

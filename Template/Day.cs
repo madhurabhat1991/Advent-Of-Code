@@ -15,6 +15,11 @@ namespace Template
     public abstract class Day<T, T1, T2>
     {
         /// <summary>
+        /// Day Number
+        /// </summary>
+        public abstract String DayNumber { get; }
+
+        /// <summary>
         /// An example of input
         /// </summary>
         T Example { get; set; }
@@ -27,13 +32,12 @@ namespace Template
         /// <summary>
         /// Main method
         /// </summary>
-        /// <param name="example"></param>
-        /// <param name="input"></param>
-        public void Main(String day, String ex)
+        /// <param name="ex"></param>
+        public void Main(String ex)
         {
             // Read file
-            var exPath = $"Day{day}\\example{ex}.txt";
-            var inPath = $"Day{day}\\input.txt";
+            var exPath = $"Day{DayNumber}\\example{ex}.txt";
+            var inPath = $"Day{DayNumber}\\input.txt";
             var example = exPath.ReadFile();
             var input = inPath.ReadFile();
 

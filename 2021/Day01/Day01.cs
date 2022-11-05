@@ -9,6 +9,8 @@ namespace _2021.Day01
 {
     public class Day01 : Day<List<int>, long, long>
     {
+        public override string DayNumber { get { return "01"; } }
+
         public override long PartOne(List<int> input)
         {
             long count = 0;
