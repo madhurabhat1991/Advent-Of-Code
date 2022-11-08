@@ -50,14 +50,7 @@ namespace _2021.Day05
                     x1 != x2 ? (x1 < x2 ? x <= x2 : x >= x2) : (y1 < y2 ? y <= y2 : y >= y2);
                     x = (x1 == x2 ? x : x1 < x2 ? x + 1 : x - 1), y = (y1 == y2 ? y : y1 < y2 ? y + 1 : y - 1))
                 {
-                    if (plots.ContainsKey((x, y)))
-                    {
-                        plots[(x, y)]++;
-                    }
-                    else
-                    {
-                        plots[(x, y)] = 1;
-                    }
+                    plots.IncrementValue((x, y), 1);
                 }
             }
             return plots.Where(r => r.Value >= 2).Count();
