@@ -1,4 +1,3 @@
-## Puzzles
 
 | Day  | Puzzle |
 | ---- | ------ |
