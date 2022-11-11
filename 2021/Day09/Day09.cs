@@ -44,7 +44,11 @@ namespace _2021.Day09
                             var nextBasin = basins.Dequeue();
                             if (!visited.Contains(nextBasin))
                             {
-                                FindNeighbors(input, nextBasin.Item1, nextBasin.Item2).ForEach(r => basins.Enqueue(r));
+                                input.FindNeighbors(nextBasin.Item1, nextBasin.Item2, false)
+                                    .Where(r => r.Item1 != 9)
+                                    .Select(r => (r.Item2, r.Item3))
+                                    .ToList()
+                                    .ForEach(r => basins.Enqueue(r));
                                 visited.Add(nextBasin);
                             }
                         } while (basins.Any());
@@ -63,42 +67,10 @@ namespace _2021.Day09
 
         private bool LowPoint(int[,] input, int row, int col)
         {
-            var digit = input[row, col];
             bool lowPoint = true;
-            if (lowPoint && row > 0 && digit >= input.GetTopElement(row, col).Item1) { lowPoint = false; }
-            if (lowPoint && col < input.GetLength(1) - 1 && digit >= input.GetRightElement(row, col).Item1) { lowPoint = false; }
-            if (lowPoint && row < input.GetLength(0) - 1 && digit >= input.GetBottomElement(row, col).Item1) { lowPoint = false; }
-            if (lowPoint && col > 0 && digit >= input.GetLeftElement(row, col).Item1) { lowPoint = false; }
+            var neighbors = input.FindNeighbors(row, col, false);
+            if (neighbors.Where(r => input[row, col] >= r.Item1).Any()) { lowPoint = false; }
             return lowPoint;
-        }
-
-        private List<(int, int)> FindNeighbors(int[,] input, int row, int col)
-        {
-            List<(int, int)> basins = new List<(int, int)>();
-            var digit = input[row, col];
-
-            if (row > 0)
-            {
-                var nextElement = input.GetTopElement(row, col);
-                if (nextElement.Item1 != 9) { basins.Add((nextElement.Item2, nextElement.Item3)); }
-            }
-            if (col < input.GetLength(1) - 1)
-            {
-                var nextElement = input.GetRightElement(row, col);
-                if (nextElement.Item1 != 9) { basins.Add((nextElement.Item2, nextElement.Item3)); }
-            }
-            if (row < input.GetLength(0) - 1)
-            {
-                var nextElement = input.GetBottomElement(row, col);
-                if (nextElement.Item1 != 9) { basins.Add((nextElement.Item2, nextElement.Item3)); }
-            }
-            if (col > 0)
-            {
-                var nextElement = input.GetLeftElement(row, col);
-                if (nextElement.Item1 != 9) { basins.Add((nextElement.Item2, nextElement.Item3)); }
-            }
-
-            return basins;
         }
     }
 }
