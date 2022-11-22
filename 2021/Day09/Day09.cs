@@ -44,7 +44,7 @@ namespace _2021.Day09
                             var nextBasin = basins.Dequeue();
                             if (!visited.Contains(nextBasin))
                             {
-                                input.FindNeighbors(nextBasin.Item1, nextBasin.Item2, false)
+                                input.GetNeighbors(nextBasin.Item1, nextBasin.Item2, false)
                                     .Where(r => r.Item1 != 9)
                                     .Select(r => (r.Item2, r.Item3))
                                     .ToList()
@@ -68,7 +68,7 @@ namespace _2021.Day09
         private bool LowPoint(int[,] input, int row, int col)
         {
             bool lowPoint = true;
-            var neighbors = input.FindNeighbors(row, col, false);
+            var neighbors = input.GetNeighbors(row, col, false);
             if (neighbors.Where(r => input[row, col] >= r.Item1).Any()) { lowPoint = false; }
             return lowPoint;
         }

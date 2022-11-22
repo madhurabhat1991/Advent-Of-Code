@@ -10,8 +10,8 @@ namespace _2021
     {
         public static void Main(string[] args)
         {
-            var challenge = new Day09.Day09();
-            var ex = "";
+            var challenge = new Day11.Day11();
+            var ex = "2";
 
             challenge.Main(ex);
         }
