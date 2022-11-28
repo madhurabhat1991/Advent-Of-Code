@@ -64,6 +64,8 @@ namespace _2021.Day12
         private const String Start = "start";
         private const String End = "end";
 
+        private bool SmallCave(String cave) { return cave.ToLower() == cave; }
+
         private void CreatePath(string from, List<String> visited, int entryLimit)
         {
             visited.Add(from);
@@ -74,16 +76,27 @@ namespace _2021.Day12
                 return;
             }
 
-            var multipleSmallVisits = visited.Any(x => x.ToLower() == x && visited.Count(y => y == x) == EntryLimitTwo);
-
-            var next = multipleSmallVisits || entryLimit == EntryLimitOne
-                ? Input[from].Where(x => x.ToUpper() == x || x == End || !visited.Contains(x)).ToList()
+            var next = DenyEntry(visited, entryLimit)
+                ? Input[from].Where(x => !SmallCave(x) || x == End || !visited.Contains(x)).ToList()
                 : Input[from];
 
             foreach (var x in next)
             {
                 CreatePath(x, visited.ToList(), entryLimit);
             }
+        }
+
+        /// <summary>
+        /// Deny entry if small cave has already been visited
+        /// </summary>
+        /// <param name="visited"></param>
+        /// <param name="entryLimit"></param>
+        /// <returns></returns>
+        private bool DenyEntry(List<String> visited, int entryLimit)
+        {
+            if (entryLimit == EntryLimitOne) { return true; }
+            if (visited.Any(x => SmallCave(x) && visited.Count(y => y == x) == EntryLimitTwo)) { return true; }
+            return false;
         }
     }
 }
