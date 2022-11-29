@@ -429,11 +429,39 @@ namespace Helpers
             {
                 for (int col = 0; col < input.GetLength(1); col++)
                 {
-                    Console.Write(input[row, col] + "\t");
+                    Console.Write(input[row, col] + (typeof(T) == typeof(Char) ? "" : "\t"));
                 }
                 Console.WriteLine("");
             }
             Console.WriteLine("");
+        }
+
+        /// <summary>
+        /// Mark the grid by given mark positions and character
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input">List<Tuple<x, y>></param>
+        /// <param name="mark"></param>
+        /// <param name="mark">unmark</param>
+        /// <returns></returns>
+        public static T[,] MarkGrid<T>(this List<Tuple<int, int>> input, T mark, T unmark)
+        {
+            T[,] array = new T[input.Select(r => r.Item2).Max() + 1, input.Select(r => r.Item1).Max() + 1];
+            foreach (var pair in input)
+            {
+                array[pair.Item2, pair.Item1] = mark;
+            }
+            for (int row = 0; row < array.GetLength(0); row++)
+            {
+                for (int col = 0; col < array.GetLength(1); col++)
+                {
+                    if (!EqualityComparer<T>.Default.Equals(array[row, col], mark))
+                    {
+                        array[row, col] = unmark;
+                    }
+                }
+            }
+            return array;
         }
     }
 }
