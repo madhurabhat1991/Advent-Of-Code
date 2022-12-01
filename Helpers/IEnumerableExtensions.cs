@@ -26,5 +26,27 @@ namespace Helpers
         {
             return input.Select(line => Int32.Parse(line)).ToList();
         }
+
+        /// <summary>
+        /// Extract blocks of input separated by blank line
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>(List<List<String>>)</returns>
+        public static List<List<String>> Blocks(this String[] input)
+        {
+            List<List<String>> blocks = new List<List<String>>();
+            while (input.Any())
+            {
+                List<String> block = new List<String>();
+                while (input.Any() && input[0].Any())
+                {
+                    block.Add(input[0]);
+                    input = input.Skip(1).ToArray();
+                }
+                blocks.Add(block);
+                input = input.Skip(1).ToArray();
+            }
+            return blocks;
+        }
     }
 }

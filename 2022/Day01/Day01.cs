@@ -3,26 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Template;
+using Helpers;
 
 namespace _2022.Day01
 {
-    public class Day01 : Day<List<String>, long, long>
+    public class Day01 : Day<List<long>, long, long>
     {
         public override string DayNumber { get { return "01"; } }
 
-        public override long PartOne(List<string> input)
+        public override long PartOne(List<long> input)
         {
-            return 0;
+            return input.Max();
         }
 
-        public override long PartTwo(List<string> input)
+        public override long PartTwo(List<long> input)
         {
-            return 0;
+            return input.OrderByDescending(r => r).Take(3).Sum();
         }
 
-        public override List<string> ProcessInput(string[] input)
+        public override List<long> ProcessInput(string[] input)
         {
-            return input.ToList();
+            List<long> totals = new List<long>();
+
+            var blocks = input.Blocks();
+            foreach (var block in blocks)
+            {
+                long total = 0;
+                foreach (var calorie in block)
+                {
+                    total += Int64.Parse(calorie);
+                }
+                totals.Add(total);
+            }
+
+            return totals;
         }
     }
 }

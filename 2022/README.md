@@ -1,7 +1,7 @@
 
 | Day  | Puzzle |
 | ---- | ------ |
-| Day 01  |   |
+| Day 01  | Calorie Counting  |
 | Day 02  |   |
 | Day 03  |   |
 | Day 04  |   |
