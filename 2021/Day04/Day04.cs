@@ -32,9 +32,10 @@ namespace _2021.Day04
             List<int> draws = input[0].Split(",", StringSplitOptions.RemoveEmptyEntries).StringArrayToIntList();
 
             input = input.Skip(2).ToArray();
+            var blocks = input.Blocks();
             List<Board> boards = new List<Board>();
             int bNum = 0;
-            while (input.Any())
+            foreach (var block in blocks)
             {
                 var board = new Board()
                 {
@@ -43,10 +44,9 @@ namespace _2021.Day04
                     Columns = new List<List<int>>(),
                     Bingo = false
                 };
-                var set = input.Take(BoardDimension).ToList();
-                set.ForEach(s =>
+                block.ForEach(r =>
                 {
-                    var row = s.Split(" ", StringSplitOptions.RemoveEmptyEntries).StringArrayToIntList();
+                    var row = r.Split(" ", StringSplitOptions.RemoveEmptyEntries).StringArrayToIntList();
                     board.Rows.Add(row);
                 });
                 for (int index = 0; index < BoardDimension; index++)
@@ -59,7 +59,6 @@ namespace _2021.Day04
                     board.Columns.Add(col);
                 }
                 boards.Add(board);
-                input = input.Skip(BoardDimension + 1).ToArray();
                 bNum++;
             }
 
