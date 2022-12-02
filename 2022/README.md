@@ -2,7 +2,7 @@
 | Day  | Puzzle |
 | ---- | ------ |
 | Day 01  | Calorie Counting  |
-| Day 02  |   |
+| Day 02  | Rock Paper Scissors  |
 | Day 03  |   |
 | Day 04  |   |
 | Day 05  |   |
