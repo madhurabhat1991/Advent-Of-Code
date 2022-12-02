@@ -12,12 +12,12 @@ namespace _2022.Day02
 
         public override long PartOne(List<Tuple<char, char>> input)
         {
-            return Play(input, false);
+            return Play(input, false);  // assumption
         }
 
         public override long PartTwo(List<Tuple<char, char>> input)
         {
-            return Play(input, true);
+            return Play(input, true);   // reality
         }
 
         public override List<Tuple<char, char>> ProcessInput(string[] input)
@@ -93,6 +93,12 @@ namespace _2022.Day02
             { Win, 6 }
         };
 
+        /// <summary>
+        /// Play game
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="reality">true if it is reality, false if player assumed</param>
+        /// <returns></returns>
         private long Play(List<Tuple<char, char>> input, bool reality)
         {
             long totalScore = 0;
@@ -119,8 +125,7 @@ namespace _2022.Day02
                 playerChose = Rules.Where(r => r.Key.Item2.Equals(opponentChose) && r.Value.Equals(playerOutcome)).FirstOrDefault().Key.Item1;
             }
 
-            var score = ChoiceScore[playerChose] + OutcomeScore[playerOutcome];
-            return score;
+            return ChoiceScore[playerChose] + OutcomeScore[playerOutcome];
         }
     }
 }
