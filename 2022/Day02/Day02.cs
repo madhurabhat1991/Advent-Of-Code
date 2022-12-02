@@ -39,49 +39,58 @@ namespace _2022.Day02
         private const string Draw = "Draw";
         private const string Win = "Win";
 
-        private Dictionary<Char, String> Opponent = new Dictionary<char, string>()
+        private Dictionary<Char, String> OpponentGuide = new Dictionary<char, string>()
         {
-            {'A', Rock },
-            {'B', Paper},
-            {'C', Scissors}
+            { 'A', Rock },
+            { 'B', Paper },
+            { 'C', Scissors }
         };
 
-        private Dictionary<Char, String> PlayerAssumption = new Dictionary<char, string>()
+        private Dictionary<Char, String> PlayerGuideAssumption = new Dictionary<char, string>()
         {
-            {'X', Rock },
-            {'Y', Paper},
-            {'Z', Scissors}
+            { 'X', Rock },
+            { 'Y', Paper },
+            { 'Z', Scissors }
         };
 
-        private Dictionary<Char, String> PlayerReality = new Dictionary<char, string>()
+        private Dictionary<Char, String> PlayerGuideReality = new Dictionary<char, string>()
         {
-            {'X', Lose },
-            {'Y', Draw},
-            {'Z', Win}
+            { 'X', Lose },
+            { 'Y', Draw },
+            { 'Z', Win }
         };
 
         /// <summary>
-        /// Key beats Value
+        /// Dictionary<(Player, Opponent), Outcome>
         /// </summary>
-        private Dictionary<String, String> Rules = new Dictionary<string, string>()
+        private Dictionary<(String, String), String> Rules = new Dictionary<(string, string), string>()
         {
-            {Rock, Scissors },
-            {Scissors, Paper},
-            {Paper, Rock}
+            // player chose key, opponent chose value - win
+            { (Rock, Scissors), Win },
+            { (Scissors, Paper), Win },
+            { (Paper, Rock), Win },
+            // player and opponent chose same - draw
+            { (Rock, Rock), Draw },
+            { (Scissors, Scissors), Draw },
+            { (Paper, Paper), Draw },
+            // player chose value, opponent chose key - lose
+            { (Scissors, Rock), Lose },
+            { (Paper, Scissors), Lose },
+            { (Rock, Paper), Lose }
         };
 
         private Dictionary<String, Int32> ChoiceScore = new Dictionary<string, int>()
         {
-            {Rock, 1 },
-            {Paper, 2},
-            {Scissors, 3}
+            { Rock, 1 },
+            { Paper, 2 },
+            { Scissors, 3 }
         };
 
         private Dictionary<String, Int32> OutcomeScore = new Dictionary<string, int>()
         {
-            {Lose, 0 },
-            {Draw, 3},
-            {Win, 6}
+            { Lose, 0 },
+            { Draw, 3 },
+            { Win, 6 }
         };
 
         private long Play(List<Tuple<char, char>> input, bool reality)
@@ -96,29 +105,21 @@ namespace _2022.Day02
 
         private long GameRound(char opponent, char player, bool reality)
         {
-            var oppChoice = Opponent[opponent];
-            var plChoice = !reality ? PlayerAssumption[player] : PlayerReality[player];
+            var opponentChose = OpponentGuide[opponent];
+            var playerChose = !reality ? PlayerGuideAssumption[player] : PlayerGuideReality[player];
 
-            String plOutcome = "";
-            if (Rules.Keys.Any(r => r.Equals(plChoice)))        // assumption
+            String playerOutcome = "";
+            if (!reality)                                       // assumption
             {
-                plOutcome = Rules[plChoice].Equals(oppChoice)   // player chose key, opponent chose value - win
-                    ? Win
-                    : oppChoice.Equals(plChoice)                // player and opponent chose same - draw    
-                    ? Draw
-                    : Lose;                                     // player chose value, opponent chose key - lose
+                playerOutcome = Rules[(playerChose, opponentChose)];
             }
             else                                                // reality
             {
-                plOutcome = plChoice;
-                plChoice = plOutcome.Equals(Win)                // to win - player needs to choose key of opponents choice
-                    ? Rules.Where(r => r.Value.Equals(oppChoice)).FirstOrDefault().Key
-                    : plOutcome.Equals(Draw)                    // to draw - player needs to choose opponents choice
-                    ? oppChoice
-                    : Rules[oppChoice];                         // to lose - player needs to choose value of opponents key
+                playerOutcome = playerChose;
+                playerChose = Rules.Where(r => r.Key.Item2.Equals(opponentChose) && r.Value.Equals(playerOutcome)).FirstOrDefault().Key.Item1;
             }
 
-            var score = ChoiceScore[plChoice] + OutcomeScore[plOutcome];
+            var score = ChoiceScore[playerChose] + OutcomeScore[playerOutcome];
             return score;
         }
     }
