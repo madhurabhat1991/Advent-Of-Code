@@ -46,14 +46,14 @@ namespace _2022.Day02
             { 'C', Scissors }
         };
 
-        private Dictionary<Char, String> PlayerGuideAssumption = new Dictionary<char, string>()
+        private Dictionary<Char, String> MyAssumptionGuide = new Dictionary<char, string>()
         {
             { 'X', Rock },
             { 'Y', Paper },
             { 'Z', Scissors }
         };
 
-        private Dictionary<Char, String> PlayerGuideReality = new Dictionary<char, string>()
+        private Dictionary<Char, String> MyRealityGuide = new Dictionary<char, string>()
         {
             { 'X', Lose },
             { 'Y', Draw },
@@ -61,19 +61,19 @@ namespace _2022.Day02
         };
 
         /// <summary>
-        /// Dictionary<(Player, Opponent), Outcome>
+        /// Dictionary<(I, Opponent), Outcome>
         /// </summary>
         private Dictionary<(String, String), String> Rules = new Dictionary<(string, string), string>()
         {
-            // player chose key, opponent chose value - win
+            // I chose key.item1, opponent chose key.item2 - I win
             { (Rock, Scissors), Win },
             { (Scissors, Paper), Win },
             { (Paper, Rock), Win },
-            // player and opponent chose same - draw
+            // I and opponent chose same - draw
             { (Rock, Rock), Draw },
             { (Scissors, Scissors), Draw },
             { (Paper, Paper), Draw },
-            // player chose value, opponent chose key - lose
+            // I chose key.item1, opponent chose key.item2 - I lose
             { (Scissors, Rock), Lose },
             { (Paper, Scissors), Lose },
             { (Rock, Paper), Lose }
@@ -96,8 +96,8 @@ namespace _2022.Day02
         /// <summary>
         /// Play game
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="reality">true if it is reality, false if player assumed</param>
+        /// <param name="input">List<Tuple<Opponent, I>></param>
+        /// <param name="reality">true if it is reality, false if I assumed my guide</param>
         /// <returns></returns>
         private long Play(List<Tuple<char, char>> input, bool reality)
         {
@@ -109,23 +109,23 @@ namespace _2022.Day02
             return totalScore;
         }
 
-        private long GameRound(char opponent, char player, bool reality)
+        private long GameRound(char opponent, char me, bool reality)
         {
-            var opponentChose = OpponentGuide[opponent];
-            var playerChose = !reality ? PlayerGuideAssumption[player] : PlayerGuideReality[player];
+            var opponentChoice = OpponentGuide[opponent];
+            var myChoice = !reality ? MyAssumptionGuide[me] : MyRealityGuide[me];
 
-            String playerOutcome = "";
+            String myOutcome = "";
             if (!reality)                                       // assumption
             {
-                playerOutcome = Rules[(playerChose, opponentChose)];
+                myOutcome = Rules[(myChoice, opponentChoice)];
             }
             else                                                // reality
             {
-                playerOutcome = playerChose;
-                playerChose = Rules.Where(r => r.Key.Item2.Equals(opponentChose) && r.Value.Equals(playerOutcome)).FirstOrDefault().Key.Item1;
+                myOutcome = myChoice;
+                myChoice = Rules.Where(r => r.Key.Item2.Equals(opponentChoice) && r.Value.Equals(myOutcome)).FirstOrDefault().Key.Item1;
             }
 
-            return ChoiceScore[playerChose] + OutcomeScore[playerOutcome];
+            return ChoiceScore[myChoice] + OutcomeScore[myOutcome];
         }
     }
 }
