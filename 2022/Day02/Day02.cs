@@ -60,6 +60,9 @@ namespace _2022.Day02
             {'Z', Win}
         };
 
+        /// <summary>
+        /// Key beats Value
+        /// </summary>
         private Dictionary<String, String> Rules = new Dictionary<string, string>()
         {
             {Rock, Scissors },
@@ -97,18 +100,22 @@ namespace _2022.Day02
             var plChoice = !reality ? PlayerAssumption[player] : PlayerReality[player];
 
             String plOutcome = "";
-            if (Rules.Keys.Any(r => r.Equals(plChoice)))
+            if (Rules.Keys.Any(r => r.Equals(plChoice)))        // assumption
             {
-                plOutcome = Rules[plChoice].Equals(oppChoice) ? Win : oppChoice.Equals(plChoice) ? Draw : Lose;
+                plOutcome = Rules[plChoice].Equals(oppChoice)   // player chose key, opponent chose value - win
+                    ? Win
+                    : oppChoice.Equals(plChoice)                // player and opponent chose same - draw    
+                    ? Draw
+                    : Lose;                                     // player chose value, opponent chose key - lose
             }
-            else
+            else                                                // reality
             {
                 plOutcome = plChoice;
-                plChoice = plOutcome.Equals(Win)
+                plChoice = plOutcome.Equals(Win)                // to win - player needs to choose key of opponents choice
                     ? Rules.Where(r => r.Value.Equals(oppChoice)).FirstOrDefault().Key
-                    : plOutcome.Equals(Draw)
+                    : plOutcome.Equals(Draw)                    // to draw - player needs to choose opponents choice
                     ? oppChoice
-                    : Rules[oppChoice];
+                    : Rules[oppChoice];                         // to lose - player needs to choose value of opponents key
             }
 
             var score = ChoiceScore[plChoice] + OutcomeScore[plOutcome];
