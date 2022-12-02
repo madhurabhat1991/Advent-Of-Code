@@ -112,16 +112,16 @@ namespace _2022.Day02
         private long GameRound(char opponent, char me, bool reality)
         {
             var opponentChoice = OpponentGuide[opponent];
-            var myChoice = !reality ? MyAssumptionGuide[me] : MyRealityGuide[me];
+            string myChoice, myOutcome = "";
 
-            String myOutcome = "";
             if (!reality)                                       // assumption
             {
+                myChoice = MyAssumptionGuide[me];
                 myOutcome = Rules[(myChoice, opponentChoice)];
             }
             else                                                // reality
             {
-                myOutcome = myChoice;
+                myOutcome = MyRealityGuide[me];
                 myChoice = Rules.Where(r => r.Key.Item2.Equals(opponentChoice) && r.Value.Equals(myOutcome)).FirstOrDefault().Key.Item1;
             }
 
