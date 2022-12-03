@@ -3,7 +3,7 @@
 | ---- | ------ |
 | Day 01  | Calorie Counting  |
 | Day 02  | Rock Paper Scissors  |
-| Day 03  |   |
+| Day 03  | Rucksack Reorganization  |
 | Day 04  |   |
 | Day 05  |   |
 | Day 06  |   |
