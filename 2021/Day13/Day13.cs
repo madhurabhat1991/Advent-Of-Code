@@ -7,38 +7,38 @@ using Helpers;
 
 namespace _2021.Day13
 {
-    public class Day13 : Day<(Char[,], List<Tuple<char, int>>), long, object>
+    public class Day13 : Day<(Char[,], List<(char, int)>), long, object>
     {
         public override string DayNumber { get { return "13"; } }
 
-        public override long PartOne((Char[,], List<Tuple<char, int>>) input)
+        public override long PartOne((Char[,], List<(char, int)>) input)
         {
             return (long)Origami(input, false);
         }
 
-        public override object PartTwo((Char[,], List<Tuple<char, int>>) input)
+        public override object PartTwo((Char[,], List<(char, int)>) input)
         {
             return Origami(input, true);
         }
 
-        public override (Char[,], List<Tuple<char, int>>) ProcessInput(string[] input)
+        public override (Char[,], List<(char, int)>) ProcessInput(string[] input)
         {
-            List<Tuple<int, int>> dots = new List<Tuple<int, int>>();
+            List<(int, int)> dots = new List<(int, int)>();
             while (input[0].Any())
             {
                 var both = input[0].Split(",").ToList();
-                dots.Add(new Tuple<int, int>(Int32.Parse(both.First()), Int32.Parse(both.Last())));
+                dots.Add((Int32.Parse(both.First()), Int32.Parse(both.Last())));
                 input = input.Skip(1).ToArray();
             }
             var grid = dots.MarkGrid(Mark, Unmark);
             //grid.Print();
             input = input.Skip(1).ToArray();
 
-            List<Tuple<char, int>> folds = new List<Tuple<char, int>>();
+            List<(char, int)> folds = new List<(char, int)>();
             while (input.Any())
             {
                 var both = input[0].Split("=").ToList();
-                folds.Add(new Tuple<char, int>(both.First().Last(), Int32.Parse(both.Last())));
+                folds.Add((both.First().Last(), Int32.Parse(both.Last())));
                 input = input.Skip(1).ToArray();
             }
             return (grid, folds);
@@ -51,7 +51,7 @@ namespace _2021.Day13
         private const char Mark = '#';
         private const char Unmark = '.';
 
-        private object Origami((Char[,], List<Tuple<char, int>>) input, bool complete)
+        private object Origami((Char[,], List<(char, int)>) input, bool complete)
         {
             Input = input.Item1;
             //Input.Print();
