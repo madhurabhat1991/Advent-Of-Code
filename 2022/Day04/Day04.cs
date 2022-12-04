@@ -14,9 +14,8 @@ namespace _2022.Day04
             long count = 0;
             foreach (var pair in input)
             {
-                (int, int) first = pair.Item1, second = pair.Item2;
-                if (first.Item1 <= second.Item1 && first.Item2 >= second.Item2
-                    || second.Item1 <= first.Item1 && second.Item2 >= first.Item2) { count++; }
+                int aStart = pair.Item1.Item1, aEnd = pair.Item1.Item2, bStart = pair.Item2.Item1, bEnd = pair.Item2.Item2;
+                if (aStart <= bStart && aEnd >= bEnd || bStart <= aStart && bEnd >= aEnd) { count++; }
             }
             return count;
         }
@@ -26,8 +25,8 @@ namespace _2022.Day04
             long count = 0;
             foreach (var pair in input)
             {
-                (int, int) first = pair.Item1, second = pair.Item2;
-                if (first.Item2 >= second.Item1 && first.Item1 <= second.Item2) { count++; }
+                int aStart = pair.Item1.Item1, aEnd = pair.Item1.Item2, bStart = pair.Item2.Item1, bEnd = pair.Item2.Item2;
+                if (aEnd >= bStart && aStart <= bEnd) { count++; }
             }
             return count;
         }
@@ -38,13 +37,13 @@ namespace _2022.Day04
             foreach (var line in input)
             {
                 var both = line.Split(",");
-                var first = both[0].Split("-");
-                var second = both[1].Split("-");
+                var a = both[0].Split("-");
+                var b = both[1].Split("-");
 
-                int firstMin = Int32.Parse(first[0]), firstMax = Int32.Parse(first[1]);
-                int secondMin = Int32.Parse(second[0]), secondMax = Int32.Parse(second[1]);
+                int aStart = Int32.Parse(a[0]), aEnd = Int32.Parse(a[1]);
+                int bStart = Int32.Parse(b[0]), bEnd = Int32.Parse(b[1]);
 
-                pairs.Add(((firstMin, firstMax), (secondMin, secondMax)));
+                pairs.Add(((aStart, aEnd), (bStart, bEnd)));
             }
             return pairs;
         }
