@@ -6,27 +6,27 @@ using Template;
 
 namespace _2022.Day02
 {
-    public class Day02 : Day<List<Tuple<Char, Char>>, long, long>
+    public class Day02 : Day<List<(Char, Char)>, long, long>
     {
         public override string DayNumber { get { return "02"; } }
 
-        public override long PartOne(List<Tuple<char, char>> input)
+        public override long PartOne(List<(Char, Char)> input)
         {
             return Play(input, false);  // assumption
         }
 
-        public override long PartTwo(List<Tuple<char, char>> input)
+        public override long PartTwo(List<(Char, Char)> input)
         {
             return Play(input, true);   // reality
         }
 
-        public override List<Tuple<char, char>> ProcessInput(string[] input)
+        public override List<(Char, Char)> ProcessInput(string[] input)
         {
-            List<Tuple<Char, Char>> guide = new List<Tuple<char, char>>();
+            List<(Char, Char)> guide = new List<(Char, Char)>();
             foreach (var line in input)
             {
                 var both = line.Split(" ");
-                guide.Add(new Tuple<char, char>(both[0][0], both[1][0]));
+                guide.Add((both[0][0], both[1][0]));
             }
             return guide;
         }
@@ -99,7 +99,7 @@ namespace _2022.Day02
         /// <param name="input">List<Tuple<Opponent, I>></param>
         /// <param name="reality">true if it is reality, false if I assumed my guide</param>
         /// <returns></returns>
-        private long Play(List<Tuple<char, char>> input, bool reality)
+        private long Play(List<(Char, Char)> input, bool reality)
         {
             long totalScore = 0;
             foreach (var round in input)
