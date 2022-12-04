@@ -96,7 +96,7 @@ namespace _2022.Day02
         /// <summary>
         /// Play game
         /// </summary>
-        /// <param name="input">List<Tuple<Opponent, I>></param>
+        /// <param name="input">List<(Opponent, I)></param>
         /// <param name="reality">true if it is reality, false if I assumed my guide</param>
         /// <returns></returns>
         private long Play(List<(Char, Char)> input, bool reality)
