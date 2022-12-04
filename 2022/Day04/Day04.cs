@@ -5,11 +5,11 @@ using Template;
 
 namespace _2022.Day04
 {
-    public class Day04 : Day<List<Tuple<(int, int), (int, int)>>, long, long>
+    public class Day04 : Day<List<((int, int), (int, int))>, long, long>
     {
         public override string DayNumber { get { return "04"; } }
 
-        public override long PartOne(List<Tuple<(int, int), (int, int)>> input)
+        public override long PartOne(List<((int, int), (int, int))> input)
         {
             long count = 0;
             foreach (var pair in input)
@@ -21,7 +21,7 @@ namespace _2022.Day04
             return count;
         }
 
-        public override long PartTwo(List<Tuple<(int, int), (int, int)>> input)
+        public override long PartTwo(List<((int, int), (int, int))> input)
         {
             long count = 0;
             foreach (var pair in input)
@@ -32,9 +32,9 @@ namespace _2022.Day04
             return count;
         }
 
-        public override List<Tuple<(int, int), (int, int)>> ProcessInput(string[] input)
+        public override List<((int, int), (int, int))> ProcessInput(string[] input)
         {
-            List<Tuple<(int, int), (int, int)>> pairs = new List<Tuple<(int, int), (int, int)>>();
+            List<((int, int), (int, int))> pairs = new List<((int, int), (int, int))>();
             foreach (var line in input)
             {
                 var both = line.Split(",");
@@ -44,7 +44,7 @@ namespace _2022.Day04
                 int firstMin = Int32.Parse(first[0]), firstMax = Int32.Parse(first[1]);
                 int secondMin = Int32.Parse(second[0]), secondMax = Int32.Parse(second[1]);
 
-                pairs.Add(new Tuple<(int, int), (int, int)>((firstMin, firstMax), (secondMin, secondMax)));
+                pairs.Add(((firstMin, firstMax), (secondMin, secondMax)));
             }
             return pairs;
         }
