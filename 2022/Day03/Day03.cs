@@ -53,8 +53,7 @@ namespace _2022.Day03
                 var rs1 = rucksacks[i];
                 var rs2 = rucksacks[i + 1];
                 var temp = rs1.ToList().Intersect(rs2.ToList()).ToList();
-                temp = commons.Any() ? temp.Intersect(commons).ToList() : temp;
-                commons = temp;
+                commons = commons.Any() ? temp.Intersect(commons).ToList() : temp;
             }
             return commons.FirstOrDefault();
         }
