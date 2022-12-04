@@ -41,10 +41,8 @@ namespace _2022.Day04
                 var first = both[0].Split("-");
                 var second = both[1].Split("-");
 
-                var firstMin = Int32.Parse(first[0]);
-                var firstMax = Int32.Parse(first[1]);
-                var secondMin = Int32.Parse(second[0]);
-                var secondMax = Int32.Parse(second[1]);
+                int firstMin = Int32.Parse(first[0]), firstMax = Int32.Parse(first[1]);
+                int secondMin = Int32.Parse(second[0]), secondMax = Int32.Parse(second[1]);
 
                 pairs.Add(new Tuple<(int, int), (int, int)>((firstMin, firstMax), (secondMin, secondMax)));
             }
