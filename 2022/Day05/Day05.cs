@@ -72,9 +72,9 @@ namespace _2022.Day05
         /// Use crate mover
         /// </summary>
         /// <param name="input"></param>
-        /// <param name="mover9001">true if cratemover 9001 is used, false otherwise</param>
+        /// <param name="isMover9001">true if cratemover 9001 is used, false otherwise</param>
         /// <returns></returns>
-        private List<Stack<char>> UseCrateMover((List<Stack<Char>>, List<(int, int, int)>) input, bool mover9001)
+        private List<Stack<char>> UseCrateMover((List<Stack<Char>>, List<(int, int, int)>) input, bool isMover9001)
         {
             var stacks = input.Item1.DeepClone();
             var instr = input.Item2;
@@ -85,7 +85,7 @@ namespace _2022.Day05
                 var from = ins.Item2;
                 var to = ins.Item3;
 
-                if (mover9001) { UseCrateMover9001(stacks, qty, from, to); }
+                if (isMover9001) { UseCrateMover9001(stacks, qty, from, to); }
                 else { UseCrateMover9000(stacks, qty, from, to); }
             }
             return stacks;
@@ -107,7 +107,6 @@ namespace _2022.Day05
             {
                 temp.Push(stacks[from].Pop());
             }
-
             for (int m = 0; m < qty; m++)
             {
                 stacks[to].Push(temp.Pop());
