@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Template;
+using Helpers;
 
 namespace _2022.Day06
 {
@@ -30,25 +31,45 @@ namespace _2022.Day06
 
         private long DetectMarker(string input, int len)
         {
-            int marker = 0;
-            string message = "";
+            Dictionary<char, long> dict = new Dictionary<char, long>();
             for (int i = 0; i < input.Length; i++)
             {
-                message += input[i];
+                dict.IncrementValue(input[i], 1);
                 if (i >= len - 1)
                 {
-                    if (i != len - 1)
+                    if (i > len - 1)
                     {
-                        message = message.Substring(1);
+                        if (dict.ContainsKey(input[i - len]))
+                        {
+                            dict[input[i - len]]--;
+                            if (dict[input[i - len]] == 0) { dict.Remove(input[i - len]); }
+                        }
                     }
-                    if (message.ToList().All(x => message.ToList().Count(y => y == x) == 1))
+                    if (dict.Keys.Count == len)
                     {
-                        marker = i + 1;
-                        break;
+                        return i + 1;
                     }
                 }
             }
-            return marker;
+            return 0;
+        }
+
+        /// <summary>
+        /// Sliding window approach but may not be optimized for larger len
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        private long DetectMarkerWindow(string input, int len)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input.Substring(i, len).ToList().Distinct().Count() == len)
+                {
+                    return i + len;
+                }
+            }
+            return 0;
         }
     }
 }

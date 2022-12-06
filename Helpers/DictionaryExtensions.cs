@@ -63,7 +63,7 @@ namespace Helpers
         /// <param name="value"></param>
         public static void DivideValue<T1>(this Dictionary<T1, long> input, long value)
         {
-            foreach (var k in input.Keys.ToList()) { input[k] /= 2; }
+            foreach (var k in input.Keys.ToList()) { input[k] /= value; }
         }
 
         /// <summary>
