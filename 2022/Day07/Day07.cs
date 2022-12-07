@@ -53,7 +53,7 @@ namespace _2022.Day07
 
             var currentDir = fs.Root;
             string path = $"{currentDir.Name}";
-            directories[currentDir.Name] = currentDir;
+            directories[path] = currentDir;
 
             for (int i = 0; i < input.Count; i++)
             {
