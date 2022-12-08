@@ -6,7 +6,7 @@ namespace _2022
     {
         public static void Main(string[] args)
         {
-            var challenge = new Day07.Day07();
+            var challenge = new Day08.Day08();
             var ex = "";
 
             challenge.Main(ex);
