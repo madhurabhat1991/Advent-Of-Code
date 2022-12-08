@@ -41,15 +41,7 @@ namespace _2022.Day07
         {
             Dictionary<String, Directory> directories = new Dictionary<string, Directory>();
 
-            FileSystem fs = new FileSystem
-            {
-                Root = new Directory
-                {
-                    Name = "/",
-                    Dirs = new List<Directory>(),
-                    Files = new List<File>()
-                }
-            };
+            FileSystem fs = new FileSystem { Root = new Directory("/") };
 
             var currentDir = fs.Root;
             string path = $"{currentDir.Name}";
@@ -58,16 +50,16 @@ namespace _2022.Day07
             for (int i = 0; i < input.Count; i++)
             {
                 var cmds = input[i].Split(" ");
-                if (cmds[0].StartsWith("$"))
+                if (cmds[0].Equals("$"))
                 {
-                    if (cmds[1].StartsWith("cd"))
+                    if (cmds[1].Equals("cd"))
                     {
-                        if (cmds[2].StartsWith("/"))
+                        if (cmds[2].Equals("/"))
                         {
                             currentDir = fs.Root;
                             path = $"{currentDir.Name}";
                         }
-                        else if (cmds[2].StartsWith(".."))
+                        else if (cmds[2].Equals(".."))
                         {
                             path = path.Substring(0, path.Length - currentDir.Name.Length - 1);
                             currentDir = currentDir.Parent;
@@ -79,25 +71,15 @@ namespace _2022.Day07
                         }
                     }
                 }
-                else if (cmds[0].StartsWith("dir"))
+                else if (cmds[0].Equals("dir"))
                 {
-                    var dir = new Directory
-                    {
-                        Name = cmds[1],
-                        Dirs = new List<Directory>(),
-                        Files = new List<File>(),
-                        Parent = currentDir
-                    };
+                    var dir = new Directory(cmds[1], currentDir);
                     currentDir.Dirs.Add(dir);
                     directories[path] = currentDir;
                 }
                 else
                 {
-                    var file = new File
-                    {
-                        Name = cmds[1],
-                        Size = Int64.Parse(cmds[0])
-                    };
+                    var file = new File(cmds[1], Int64.Parse(cmds[0]));
                     currentDir.Files.Add(file);
                     directories[path] = currentDir;
                 }
@@ -119,14 +101,24 @@ namespace _2022.Day07
     {
         public string Name { get; set; }
         public Directory Parent { get; set; }
-        public List<Directory> Dirs { get; set; }
-        public List<File> Files { get; set; }
+        public List<Directory> Dirs { get; set; } = new List<Directory>();
+        public List<File> Files { get; set; } = new List<File>();
         public long Size { get { return Files.Sum(r => r.Size) + Dirs.Sum(r => r.Size); } }
+        public Directory(string name, Directory parent = null)
+        {
+            this.Name = name;
+            this.Parent = parent;
+        }
     }
 
     public class File
     {
         public string Name { get; set; }
         public long Size { get; set; }
+        public File(string name, long size)
+        {
+            this.Name = name;
+            this.Size = size;
+        }
     }
 }
