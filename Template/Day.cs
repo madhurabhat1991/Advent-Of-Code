@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Helpers;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Template
 {
@@ -45,21 +46,29 @@ namespace Template
             Example = ProcessInput(example);
             Input = ProcessInput(input);
 
-            // Call and display output
+            // Call and display output, log time taken
             Console.WriteLine("Part One Example " + ex);
+            LogTime();
             Console.WriteLine(PartOne(Example));
+            LogTime();
             Console.WriteLine();
 
             Console.WriteLine("Part One Input");
+            LogTime();
             Console.WriteLine(PartOne(Input));
+            LogTime();
             Console.WriteLine();
 
             Console.WriteLine("Part Two Example " + ex);
+            LogTime();
             Console.WriteLine(PartTwo(Example));
+            LogTime();
             Console.WriteLine();
 
             Console.WriteLine("Part Two Input");
+            LogTime();
             Console.WriteLine(PartTwo(Input));
+            LogTime();
             Console.WriteLine();
         }
 
@@ -83,5 +92,20 @@ namespace Template
         /// <param name="input"></param>
         /// <returns></returns>
         public abstract T2 PartTwo(T input);
+
+        private Stopwatch stopwatch { get; set; } = new Stopwatch();
+        private void LogTime()
+        {
+            if (!stopwatch.IsRunning)
+            {
+                stopwatch.Start();
+            }
+            else
+            {
+                stopwatch.Stop();
+                Console.WriteLine("\n" + "Time : " + stopwatch.ElapsedMilliseconds + " ms");
+                stopwatch.Reset();
+            }
+        }
     }
 }
