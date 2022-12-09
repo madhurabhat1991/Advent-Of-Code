@@ -25,9 +25,8 @@ namespace _2022.Day09
             Rope rope = new Rope
             {
                 Head = new Knot(Head),
-                Tails = new List<Knot>() { }
             };
-            Enumerable.Range(1, 9).ToList().ForEach(r => rope.Tails.Add(new Knot(Char.Parse(r.ToString()))));
+            Enumerable.Range(1, 9).ToList().ForEach(r => rope.Tails.Add(new Knot(r.ToString())));
             return RopeModel(input, rope).Count;
         }
 
@@ -41,8 +40,8 @@ namespace _2022.Day09
         private const char Down = 'D';
         private const char Left = 'L';
 
-        private const char Head = 'H';
-        private const char Tail = 'T';
+        private const string Head = "H";
+        private const string Tail = "T";
 
         private HashSet<(int, int)> RopeModel(List<string> input, Rope rope)
         {
@@ -84,57 +83,13 @@ namespace _2022.Day09
                 var prev = rope.Head;
                 foreach (var current in rope.Tails)
                 {
-                    // if prev and current do not overlap
-                    if (prev.Position != current.Position)
+                    // move current - if prev and current do not overlap and are not adjacent - distance > 1
+                    if (Math.Abs(prev.Position.Item1 - current.Position.Item1) > 1
+                        || Math.Abs(prev.Position.Item2 - current.Position.Item2) > 1)
                     {
-                        // if prev and current are not adjacent
-                        if (current.Position != (prev.Position.Item1 - 1, prev.Position.Item2)         // current at top
-                            && current.Position != (prev.Position.Item1 - 1, prev.Position.Item2 + 1)  // current at top right
-                            && current.Position != (prev.Position.Item1, prev.Position.Item2 + 1)      // current at right
-                            && current.Position != (prev.Position.Item1 + 1, prev.Position.Item2 + 1)  // current at bottom right
-                            && current.Position != (prev.Position.Item1 + 1, prev.Position.Item2)      // current at bottom
-                            && current.Position != (prev.Position.Item1 + 1, prev.Position.Item2 - 1)  // current at bottom left
-                            && current.Position != (prev.Position.Item1, prev.Position.Item2 - 1)      // current at left
-                            && current.Position != (prev.Position.Item1 - 1, prev.Position.Item2 - 1)) // current at top left
-                        {
-                            // move current
-                            // if prev and current are on same row
-                            if (prev.Position.Item1 == current.Position.Item1)
-                            {
-                                if (prev.Position.Item2 > current.Position.Item2) { current.Position.Item2 += 1; }
-                                else { current.Position.Item2 -= 1; }
-                            }
-                            // if prev and current are on same col
-                            else if (prev.Position.Item2 == current.Position.Item2)
-                            {
-                                if (prev.Position.Item1 > current.Position.Item1) { current.Position.Item1 += 1; }
-                                else { current.Position.Item1 -= 1; }
-                            }
-                            // if prev and current are far
-                            else
-                            {
-                                // prev is on top right
-                                if (prev.Position.Item1 < current.Position.Item1 && prev.Position.Item2 > current.Position.Item2)
-                                {
-                                    current.Position = (current.Position.Item1 - 1, current.Position.Item2 + 1);
-                                }
-                                // prev is on bottom right
-                                else if (prev.Position.Item1 > current.Position.Item1 && prev.Position.Item2 > current.Position.Item2)
-                                {
-                                    current.Position = (current.Position.Item1 + 1, current.Position.Item2 + 1);
-                                }
-                                // prev is on bottom left
-                                else if (prev.Position.Item1 > current.Position.Item1 && prev.Position.Item2 < current.Position.Item2)
-                                {
-                                    current.Position = (current.Position.Item1 + 1, current.Position.Item2 - 1);
-                                }
-                                // prev is on top left
-                                else
-                                {
-                                    current.Position = (current.Position.Item1 - 1, current.Position.Item2 - 1);
-                                }
-                            }
-                        }
+                        // move 1 step towards prev - sign determines direction
+                        current.Position.Item1 += Math.Sign(prev.Position.Item1 - current.Position.Item1);
+                        current.Position.Item2 += Math.Sign(prev.Position.Item2 - current.Position.Item2);
                     }
                     prev = current;
                 }
@@ -147,14 +102,14 @@ namespace _2022.Day09
     public class Rope
     {
         public Knot Head { get; set; }
-        public List<Knot> Tails { get; set; }
+        public List<Knot> Tails { get; set; } = new List<Knot>();
     }
 
     public class Knot
     {
-        public char Name { get; set; }
+        public string Name { get; set; }
         public (int, int) Position = (0, 0);
-        public Knot(char name)
+        public Knot(string name)
         {
             this.Name = name;
         }
