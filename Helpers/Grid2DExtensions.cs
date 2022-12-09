@@ -44,6 +44,86 @@ namespace Helpers
         }
 
         /// <summary>
+        /// Add given number of rows to top of the grid
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static T[,] AddRowsToTop<T>(this T[,] input, int count)
+        {
+            T[,] array = new T[input.GetLength(0) + count, input.GetLength(1)];
+            for (int row = count, i = 0; i < input.GetLength(0); row++, i++)
+            {
+                for (int col = 0, j = 0; j < input.GetLength(1); col++, j++)
+                {
+                    array[row, col] = input[i, j];
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// Add given number of columns to right of the grid
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static T[,] AddColumnsToRight<T>(this T[,] input, int count)
+        {
+            T[,] array = new T[input.GetLength(0), input.GetLength(1) + count];
+            for (int row = 0, i = 0; i < input.GetLength(0); row++, i++)
+            {
+                for (int col = 0, j = 0; j < input.GetLength(1); col++, j++)
+                {
+                    array[row, col] = input[i, j];
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// Add given number of rows to bottom of the grid
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static T[,] AddRowsToBottom<T>(this T[,] input, int count)
+        {
+            T[,] array = new T[input.GetLength(0) + count, input.GetLength(1)];
+            for (int row = 0, i = 0; i < input.GetLength(0); row++, i++)
+            {
+                for (int col = 0, j = 0; j < input.GetLength(1); col++, j++)
+                {
+                    array[row, col] = input[i, j];
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// Add given number of columns to left of the grid
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static T[,] AddColumnsToLeft<T>(this T[,] input, int count)
+        {
+            T[,] array = new T[input.GetLength(0), input.GetLength(1) + count];
+            for (int row = 0, i = 0; i < input.GetLength(0); row++, i++)
+            {
+                for (int col = count, j = 0; j < input.GetLength(1); col++, j++)
+                {
+                    array[row, col] = input[i, j];
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
         /// Get top cell of a cell
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -462,6 +542,29 @@ namespace Helpers
                 }
             }
             return array;
+        }
+
+        /// <summary>
+        /// Mark the grid by given mark wherever it is match
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input"></param>
+        /// <param name="mark"></param>
+        /// <param name="match"></param>
+        /// <returns></returns>
+        public static T[,] MarkGrid<T>(this T[,] input, T match, T mark)
+        {
+            for (int row = 0; row < input.GetLength(0); row++)
+            {
+                for (int col = 0; col < input.GetLength(1); col++)
+                {
+                    if (EqualityComparer<T>.Default.Equals(input[row, col], match))
+                    {
+                        input[row, col] = mark;
+                    }
+                }
+            }
+            return input;
         }
     }
 }

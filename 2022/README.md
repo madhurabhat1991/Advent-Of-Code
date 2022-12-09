@@ -9,7 +9,7 @@
 | Day 06  | Tuning Trouble  |
 | Day 07  | No Space Left On Device  |
 | Day 08  | Treetop Tree House  |
-| Day 09  |   |
+| Day 09  | Rope Bridge  |
 | Day 10  |   |
 | Day 11  |   |
 | Day 12  |   |
