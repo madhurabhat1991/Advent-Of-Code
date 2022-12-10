@@ -545,6 +545,32 @@ namespace Helpers
         }
 
         /// <summary>
+        /// Mark the grid by given mark positions and character
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="positions">List<(x, y)></param>
+        /// <param name="mark"></param>
+        /// <param name="mark">unmark</param>
+        /// <returns></returns>
+        public static void MarkGrid<T>(this T[,] input, List<(int, int)> positions, T mark, T unmark)
+        {
+            foreach (var pair in positions)
+            {
+                input[pair.Item2, pair.Item1] = mark;
+            }
+            for (int row = 0; row < input.GetLength(0); row++)
+            {
+                for (int col = 0; col < input.GetLength(1); col++)
+                {
+                    if (!EqualityComparer<T>.Default.Equals(input[row, col], mark))
+                    {
+                        input[row, col] = unmark;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Mark the grid by given mark wherever it is match
         /// </summary>
         /// <typeparam name="T"></typeparam>
