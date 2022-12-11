@@ -74,6 +74,7 @@ namespace _2022.Day11
         private long MonkeyBusiness(List<Monkey> monkeys, bool part1)
         {
             int rounds = part1 ? RoundsOne : RoundsTwo;
+            var relief = monkeys.Aggregate(1, (a, x) => a * x.Test.Item1);
             while (rounds > 0)
             {
                 foreach (var monkey in monkeys)
@@ -81,7 +82,7 @@ namespace _2022.Day11
                     while (monkey.Items != null && monkey.Items.Any())
                     {
                         monkey.Inspect();
-                        monkey.Relief(part1, monkeys.Aggregate(1, (a, x) => a * x.Test.Item1));
+                        monkey.Relief(part1, relief);
                         (int, long) next = monkey.Throw();
                         monkeys.First(r => r.Number == next.Item1).Items.Enqueue(next.Item2);
                     }
