@@ -11,7 +11,7 @@
 | Day 08  | Treetop Tree House  |
 | Day 09  | Rope Bridge  |
 | Day 10  | Cathode-Ray Tube  |
-| Day 11  |   |
+| Day 11  | Monkey in the Middle  |
 | Day 12  |   |
 | Day 13  |   |
 | Day 14  |   |
