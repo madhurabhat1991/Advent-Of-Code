@@ -12,7 +12,7 @@
 | Day 09  | Rope Bridge  |
 | Day 10  | Cathode-Ray Tube  |
 | Day 11  | Monkey in the Middle  |
-| Day 12  |   |
+| Day 12  | Hill Climbing Algorithm  |
 | Day 13  |   |
 | Day 14  |   |
 | Day 15  |   |
