@@ -124,7 +124,6 @@ namespace _2022.Day14
         private const char Source = '+';
         private const char Sand = '@';
 
-
         /// <summary>
         /// Drop the sand from source
         /// </summary>
@@ -223,6 +222,12 @@ namespace _2022.Day14
             return false;
         }
 
+        /// <summary>
+        /// Find a collision point when the sand drops down
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="srcPoint">(source row, source column)</param>
+        /// <returns>(collision row, collision column)</returns>
         private (int, int) FindSourceBlockPoint(char[,] grid, (int, int) srcPoint)
         {
             (int, int) collision = (srcPoint.Item1, srcPoint.Item2);
