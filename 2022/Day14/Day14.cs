@@ -16,15 +16,7 @@ namespace _2022.Day14
             var grid = input.Item1.DeepClone();
             var srcPoint = input.Item2;
 
-            long units = 0;
-            bool abyss = false;
-            while (!abyss)      // haven't fallen into abyss
-            {
-                abyss = DropSand(ref grid, ref srcPoint, ref units, true);
-            }
-            //grid.Print();
-
-            return units;
+           return Cave(ref grid, ref srcPoint, true);
         }
 
         public override long PartTwo((char[,], (int, int)) input)
@@ -45,15 +37,7 @@ namespace _2022.Day14
                 grid[row, col] = Rock;
             }
 
-            long units = 0;
-            bool reached = false;
-            while (!reached)        // haven't reached the source
-            {
-                reached = DropSand(ref grid, ref srcPoint, ref units, false);
-            }
-            //grid.Print();
-
-            return units;
+            return Cave(ref grid, ref srcPoint, false);
         }
 
         /// <summary>
@@ -122,7 +106,26 @@ namespace _2022.Day14
         private const char Rock = '#';
         private const char Air = '.';
         private const char Source = '+';
-        private const char Sand = '@';
+        private const char Sand = 'o';
+
+        /// <summary>
+        /// Cave system
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="srcPoint">(source row, source column)</param>
+        /// <param name="abyssExists">true if abyss exists (part 1), false otherwise</param>
+        /// <returns>Sand units</returns>
+        private long Cave(ref char[,] grid, ref (int, int) srcPoint, bool abyssExists)
+        {
+            long units = 0;
+            bool abort = false;
+            while (!abort)      // haven't fallen into abyss (part 1) OR haven't reached the source (part 2)
+            {
+                abort = DropSand(ref grid, ref srcPoint, ref units, abyssExists);
+            }
+            //grid.Print();
+            return units;
+        }
 
         /// <summary>
         /// Drop the sand from source
