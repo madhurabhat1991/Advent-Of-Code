@@ -592,5 +592,24 @@ namespace Helpers
             }
             return input;
         }
+
+        /// <summary>
+        /// Mark the grid by given mark
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input"></param>
+        /// <param name="mark"></param>
+        /// <returns></returns>
+        public static T[,] MarkGrid<T>(this T[,] input, T mark)
+        {
+            for (int row = 0; row < input.GetLength(0); row++)
+            {
+                for (int col = 0; col < input.GetLength(1); col++)
+                {
+                    input[row, col] = mark;
+                }
+            }
+            return input;
+        }
     }
 }
