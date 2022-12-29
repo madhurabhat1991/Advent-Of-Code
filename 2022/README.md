@@ -18,7 +18,7 @@
 | Day 15  | Beacon Exclusion Zone  |
 | Day 16  | Proboscidea Volcanium  |
 | Day 17  |   |
-| Day 18  |   |
+| Day 18  | Boiling Boulders  |
 | Day 19  |   |
 | Day 20  |   |
 | Day 21  |   |
