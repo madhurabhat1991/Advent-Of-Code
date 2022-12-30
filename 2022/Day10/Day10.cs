@@ -86,7 +86,7 @@ namespace _2022.Day10
                 }
 
             }
-            crt.Print();
+            crt.Print(false);
             return null;
         }
 

@@ -61,7 +61,7 @@ namespace _2021.Day13
                 //Input.Print();
                 if (!complete) { return (long)Input.GetCellsEqualToValue(Mark).Count; }
             }
-            if (complete) { Input.Print(); }
+            if (complete) { Input.Print(false); }
             return null;
         }
 

@@ -503,13 +503,13 @@ namespace Helpers
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="input"></param>
-        public static void Print<T>(this T[,] input)
+        public static void Print<T>(this T[,] input, bool tab = true)
         {
             for (int row = 0; row < input.GetLength(0); row++)
             {
                 for (int col = 0; col < input.GetLength(1); col++)
                 {
-                    Console.Write(input[row, col] + (typeof(T) == typeof(Char) ? "" : "\t"));
+                    Console.Write(input[row, col] + (tab ? "\t" : ""));
                 }
                 Console.WriteLine("");
             }
@@ -610,6 +610,66 @@ namespace Helpers
                 }
             }
             return input;
+        }
+
+        /// <summary>
+        /// Using Dijkstra's algorithm find the shortest distance between start and every node in graph
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="start">Start's (row, col)</param>
+        /// <returns>Dictionary<key, value> : key - (Node's row, col), value - (cost, (Previous node's row, col))</returns>
+        public static Dictionary<(int, int), (long, (int, int))> Dijkstra(this int[,] input, (int, int) start)
+        {
+            Dictionary<(int, int), (long, (int, int))> costs = new Dictionary<(int, int), (long, (int, int))>();
+            HashSet<(int, int)> visited = new HashSet<(int, int)>();
+            SortedSet<(long, (int, int))> queue = new SortedSet<(long, (int, int))>();  // Need to use Priority Queue avail > .NET 6
+
+            // begin with start
+            queue.Add((0, start));
+            costs.Add(start, (0, start));
+
+            while (queue.Count > 0)
+            {
+                // dequeue and visited
+                var node = queue.First().Item2;
+                queue.RemoveWhere(r => r.Item2 == node);
+                visited.Add(node);
+
+                // get neighbors
+                var neighbors = input.GetNeighbors(node.Item1, node.Item2, false);
+                foreach (var neighbor in neighbors)
+                {
+                    // if neighbor is not visited
+                    if (!visited.Contains((neighbor.Item2, neighbor.Item3)))
+                    {
+                        // add or update path cost
+                        long newCost = costs[node].Item1 + neighbor.Item1;
+                        (long, (int, int)) value;
+                        if (costs.TryGetValue((neighbor.Item2, neighbor.Item3), out value))
+                        {
+                            if (newCost < value.Item1)
+                            {
+                                value = (newCost, node);
+                            }
+                        }
+                        else
+                        {
+                            value = (newCost, node);
+                        }
+                        costs[(neighbor.Item2, neighbor.Item3)] = value;
+                        // update priority queue
+                        try
+                        {
+                            queue.RemoveWhere(r => r.Item2 == (neighbor.Item2, neighbor.Item3));
+                        }
+                        finally
+                        {
+                            queue.Add((value.Item1, (neighbor.Item2, neighbor.Item3)));
+                        }
+                    }
+                }
+            }
+            return costs;
         }
     }
 }
