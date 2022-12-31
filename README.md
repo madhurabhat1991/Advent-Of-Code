@@ -20,3 +20,4 @@ Solving the puzzles of <a href='https://adventofcode.com/'>Advent of Code</a> us
   - 2022 - Day 13 onwards
 - Upgrade .NET to 6 or 7
 - Use Priority Queue in GridExtensions/Dijkstra instead of SortedSet
+- Unit tests for Helpers, puzzles
