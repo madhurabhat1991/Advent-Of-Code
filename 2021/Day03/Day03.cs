@@ -21,16 +21,16 @@ namespace _2021.Day03
                 epsilon += least;
             }
 
-            var gammaRate = gamma.BinaryToDecimal();
-            var epsilonRate = epsilon.BinaryToDecimal();
+            var gammaRate = gamma.BinaryStringToDecimal();
+            var epsilonRate = epsilon.BinaryStringToDecimal();
 
             return gammaRate * epsilonRate;
         }
 
         public override long PartTwo(List<String> input)
         {
-            var ogr = FindRating(input, One).BinaryToDecimal();
-            var csr = FindRating(input, Zero).BinaryToDecimal();
+            var ogr = FindRating(input, One).BinaryStringToDecimal();
+            var csr = FindRating(input, Zero).BinaryStringToDecimal();
 
             return ogr * csr;
         }
