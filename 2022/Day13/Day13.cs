@@ -1,57 +1,57 @@
 ﻿using Helpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Template;
 
 namespace _2022.Day13
 {
-    public class Day13 : Day<List<(String, String)>, long, long>
+    public class Day13 : Day<string[], long, long>
     {
         public override string DayNumber { get { return "13"; } }
 
-        public override long PartOne(List<(string, string)> input)
+        public override long PartOne(string[] input)
         {
             long sum = 0;
-
-            for (int i = 0; i < input.Count; i++)
+            var packets = input.Blocks();
+            int i = 0;
+            packets.ForEach(r =>
             {
-                var order = Compare(input[i].Item1, input[i].Item2);
-            }
-
+                if (PacketParser.CompareElements(ParsePacket(r[0]), ParsePacket(r[1])) <= 0)
+                {
+                    sum += i + 1;
+                }
+                i++;
+            });
             return sum;
         }
 
-        public override long PartTwo(List<(string, string)> input)
+        public override long PartTwo(string[] input)
         {
-            return 0;
+            long prod = 1;
+            var packets = input.Blocks().SelectMany(r => r).ToList();
+            packets.AddRange(DividerPkts);
+            List<(string, List<object>)> pairs = new List<(string, List<object>)>();
+            packets.ForEach(r => { pairs.Add((r, ParsePacket(r))); });
+            pairs.Sort((f, s) => PacketParser.CompareElements(f.Item2, s.Item2));
+            DividerPkts.ForEach(r => prod = prod * (pairs.IndexOf(pairs.First(p => p.Item1.Equals(r))) + 1));
+            return prod;
         }
 
-        public override List<(string, string)> ProcessInput(string[] input)
+        public override string[] ProcessInput(string[] input)
         {
-            List<(string, string)> pairs = new List<(string, string)>();
-            input.Blocks().ForEach(block => pairs.Add((block[0], block[1])));
-            return pairs;
+            return input;
         }
 
-        private const char Open = '[';
-        private const char Close = ']';
+        private const char Start = '[';
+        private const char End = ']';
 
-        private string OpenBrackets(string str)
-        {
-            if (str.Length > 2) { str = str.Substring(1, str.Length - 2); }
-            else str = "";
-            return str;
-        }
+        private List<string> DividerPkts = new List<string>() { "[[2]]", "[[6]]" };
 
-        private bool Compare(string first, string second)
+        private List<object> ParsePacket(string input)
         {
-            // both are lists - open brackets
-            if (first[0].Equals(Open) && second[0].Equals(Open))
-            {
-                Compare(OpenBrackets(first), OpenBrackets(second));
-            }
-            return false;
+            return PacketParser.Parse(input, Start, End);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Helpers
         /// </summary>
         /// <param name="binary"></param>
         /// <returns></returns>
-        public static Int64 BinaryStringToDecimal(this String binary)
+        public static Int64 StringBinaryToDecimal(this String binary)
         {
             return Convert.ToInt64(binary, 2);
         }
