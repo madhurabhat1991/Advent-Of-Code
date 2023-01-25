@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Template;
+using Helpers;
+using System.Linq;
 
 namespace _2022.Day15
 {
@@ -11,7 +13,39 @@ namespace _2022.Day15
 
         public override long PartOne(List<((int, int), (int, int))> input)
         {
-            throw new NotImplementedException();
+            Dictionary<(int, int), char> marks = new Dictionary<(int, int), char>();
+            foreach (var pair in input)
+            {
+                int sx = pair.Item1.Item1, sy = pair.Item1.Item2;
+                int bx = pair.Item2.Item1, by = pair.Item2.Item2;
+
+                // mark sensor and beacon positions
+                marks[(sx, sy)] = 'S';
+                marks[(bx, by)] = 'B';
+
+                // mark manhattan distance coverage
+                var mDist = Math.Abs(sx - bx) + Math.Abs(sy - by);
+                int x1 = sx - mDist, y1 = sy, y2 = sy, xSpan = x1 + 2 * mDist, ySpan = sy - mDist;
+                do
+                {
+                    if (y1 == YOne || y2 == YOne)           // only for interested Y axis
+                    {
+                        int x11 = x1;
+                        while (x11 <= xSpan)                // until the horizontal span reached
+                        {
+                            if (!marks.ContainsKey((x11, y1))) { marks[(x11, y1)] = Mark; }
+                            if (!marks.ContainsKey((x11, y2))) { marks[(x11, y2)] = Mark; }
+                            x11++;
+                        }
+                    }
+                    x1++; xSpan--;
+                    y1--; y2++;
+                } while ((x1, y1) != (xSpan, ySpan));       // until the coverage point reached
+            }
+
+            // check the coverage on line
+            var coverage = marks.Where(x => x.Key.Item2 == YOne).Where(x => x.Value.Equals(Mark)).ToList();
+            return coverage.Count();
         }
 
         public override long PartTwo(List<((int, int), (int, int))> input)
@@ -32,5 +66,8 @@ namespace _2022.Day15
             }
             return pairs;
         }
+
+        private const char Mark = '#';
+        private const int YOne = 2000000;  // example - 10, input - 2000000
     }
 }
