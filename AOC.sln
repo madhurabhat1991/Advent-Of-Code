@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpers", "Helpers\Helpers.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2022", "2022\2022.csproj", "{6A668DEE-A139-4AFF-8B48-A24B8F057BA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5ED7CDE0-E48C-43F0-96F1-219B2C83F6FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{5ED7CDE0-E48C-43F0-96F1-219B2C83F6FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2023", "2023\2023.csproj", "{30284316-DA37-41A7-BC78-A05A59298966}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{5ED7CDE0-E48C-43F0-96F1-219B2C83F6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ED7CDE0-E48C-43F0-96F1-219B2C83F6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ED7CDE0-E48C-43F0-96F1-219B2C83F6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30284316-DA37-41A7-BC78-A05A59298966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30284316-DA37-41A7-BC78-A05A59298966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30284316-DA37-41A7-BC78-A05A59298966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30284316-DA37-41A7-BC78-A05A59298966}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
