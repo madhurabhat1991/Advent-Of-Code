@@ -34,7 +34,9 @@ namespace Template
         /// Main method
         /// </summary>
         /// <param name="ex"></param>
-        public void Main(String ex)
+        /// <param name="skipPart1">true if the inputs of Part 1 should not be run, false by default</param>
+        /// <param name="skipPart2">true if the inputs of Part 2 should not be run, false by default</param>
+        public void Main(String ex, bool skipPart1 = false, bool skipPart2 = false)
         {
             // Read file
             var exPath = $"Day{DayNumber}\\example{ex}.txt";
@@ -47,29 +49,35 @@ namespace Template
             Input = ProcessInput(input);
 
             // Call and display output, log time taken
-            Console.WriteLine("Part One Example " + ex);
-            LogTime();
-            Console.WriteLine(PartOne(Example));
-            LogTime();
-            Console.WriteLine();
+            if (!skipPart1)
+            {
+                Console.WriteLine("Part One Example " + ex);
+                LogTime();
+                Console.WriteLine(PartOne(Example));
+                LogTime();
+                Console.WriteLine();
 
-            Console.WriteLine("Part One Input");
-            LogTime();
-            Console.WriteLine(PartOne(Input));
-            LogTime();
-            Console.WriteLine();
+                Console.WriteLine("Part One Input");
+                LogTime();
+                Console.WriteLine(PartOne(Input));
+                LogTime();
+                Console.WriteLine();
+            }
 
-            Console.WriteLine("Part Two Example " + ex);
-            LogTime();
-            Console.WriteLine(PartTwo(Example));
-            LogTime();
-            Console.WriteLine();
+            if (!skipPart2)
+            {
+                Console.WriteLine("Part Two Example " + ex);
+                LogTime();
+                Console.WriteLine(PartTwo(Example));
+                LogTime();
+                Console.WriteLine();
 
-            Console.WriteLine("Part Two Input");
-            LogTime();
-            Console.WriteLine(PartTwo(Input));
-            LogTime();
-            Console.WriteLine();
+                Console.WriteLine("Part Two Input");
+                LogTime();
+                Console.WriteLine(PartTwo(Input));
+                LogTime();
+                Console.WriteLine();
+            }
         }
 
         /// <summary>

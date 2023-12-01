@@ -1,7 +1,7 @@
 
 | Day  | Puzzle |
 | ---- | ------ |
-| Day 01  |   |
+| Day 01  | Trebuchet?!  |
 | Day 02  |   |
 | Day 03  |   |
 | Day 04  |   |

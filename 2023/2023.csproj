@@ -10,7 +10,8 @@
   <ItemGroup>
     <None Remove=".gitattributes" />
     <None Remove=".gitignore" />
-    <None Remove="Day01\example.txt" />
+    <None Remove="Day01\example1.txt" />
+    <None Remove="Day01\example2.txt" />
     <None Remove="Day01\input.txt" />
     <None Remove="Day02\example.txt" />
     <None Remove="Day02\input.txt" />
@@ -63,7 +64,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Day01\example.txt">
+    <Content Include="Day01\example1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Day01\example2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Day01\input.txt">
