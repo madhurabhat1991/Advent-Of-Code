@@ -2,7 +2,7 @@
 | Day  | Puzzle |
 | ---- | ------ |
 | Day 01  | Trebuchet?!  |
-| Day 02  |   |
+| Day 02  | Cube Conundrum  |
 | Day 03  |   |
 | Day 04  |   |
 | Day 05  |   |
