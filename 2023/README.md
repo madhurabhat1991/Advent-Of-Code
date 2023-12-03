@@ -3,7 +3,7 @@
 | ---- | ------ |
 | Day 01  | Trebuchet?!  |
 | Day 02  | Cube Conundrum  |
-| Day 03  |   |
+| Day 03  | Gear Ratios  |
 | Day 04  |   |
 | Day 05  |   |
 | Day 06  |   |
