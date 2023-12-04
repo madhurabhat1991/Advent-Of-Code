@@ -4,7 +4,7 @@
 | Day 01  | Trebuchet?!  |
 | Day 02  | Cube Conundrum  |
 | Day 03  | Gear Ratios  |
-| Day 04  |   |
+| Day 04  | Scratchcards  |
 | Day 05  |   |
 | Day 06  |   |
 | Day 07  |   |
