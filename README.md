@@ -17,7 +17,7 @@ Solving the puzzles of <a href='https://adventofcode.com/'>Advent of Code</a> us
 ## To-do
 
 - Complete all puzzles
-  - 2023
+  - 2023 - Day 5 rework
   - 2022 - Day 15 onwards
   - 2021 - Day 16, 17, 19, 20, 21, 22, 23, 24, 25
 - Upgrade .NET to 6 or 7
