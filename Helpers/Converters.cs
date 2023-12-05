@@ -46,5 +46,15 @@ namespace Helpers
         {
             return input.Select(line => Int32.Parse(line)).ToList();
         }
+
+        /// <summary>
+        /// Convert each string in an array to long list
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static List<Int64> StringArrayToLongList(this String[] input)
+        {
+            return input.Select(line => Int64.Parse(line)).ToList();
+        }
     }
 }

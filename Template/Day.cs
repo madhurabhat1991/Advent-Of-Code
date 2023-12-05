@@ -36,7 +36,9 @@ namespace Template
         /// <param name="ex"></param>
         /// <param name="skipPart1">true if the inputs of Part 1 should not be run, false by default</param>
         /// <param name="skipPart2">true if the inputs of Part 2 should not be run, false by default</param>
-        public void Main(String ex, bool skipPart1 = false, bool skipPart2 = false)
+        /// <param name="skipExample">true if the examples should not be run, false by default</param>
+        /// <param name="skipInput">true if the inputs should not be run, false by default</param>
+        public void Main(String ex, bool skipPart1 = false, bool skipPart2 = false, bool skipExample = false, bool skipInput = false)
         {
             // Read file
             var exPath = $"Day{DayNumber}\\example{ex}.txt";
@@ -51,32 +53,44 @@ namespace Template
             // Call and display output, log time taken
             if (!skipPart1)
             {
-                Console.WriteLine("Part One Example " + ex);
-                LogTime();
-                Console.WriteLine(PartOne(Example));
-                LogTime();
-                Console.WriteLine();
+                if (!skipExample)
+                {
+                    Console.WriteLine("Part One Example " + ex);
+                    LogTime();
+                    Console.WriteLine(PartOne(Example));
+                    LogTime();
+                    Console.WriteLine();
+                }
 
-                Console.WriteLine("Part One Input");
-                LogTime();
-                Console.WriteLine(PartOne(Input));
-                LogTime();
-                Console.WriteLine();
+                if (!skipInput)
+                {
+                    Console.WriteLine("Part One Input");
+                    LogTime();
+                    Console.WriteLine(PartOne(Input));
+                    LogTime();
+                    Console.WriteLine();
+                }
             }
 
             if (!skipPart2)
             {
-                Console.WriteLine("Part Two Example " + ex);
-                LogTime();
-                Console.WriteLine(PartTwo(Example));
-                LogTime();
-                Console.WriteLine();
+                if (!skipExample)
+                {
+                    Console.WriteLine("Part Two Example " + ex);
+                    LogTime();
+                    Console.WriteLine(PartTwo(Example));
+                    LogTime();
+                    Console.WriteLine();
+                }
 
-                Console.WriteLine("Part Two Input");
-                LogTime();
-                Console.WriteLine(PartTwo(Input));
-                LogTime();
-                Console.WriteLine();
+                if (!skipInput)
+                {
+                    Console.WriteLine("Part Two Input");
+                    LogTime();
+                    Console.WriteLine(PartTwo(Input));
+                    LogTime();
+                    Console.WriteLine();
+                }
             }
         }
 
