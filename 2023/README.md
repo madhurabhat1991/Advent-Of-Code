@@ -7,7 +7,7 @@
 | Day 04  | Scratchcards  |
 | Day 05  | If You Give A Seed A Fertilizer  |
 | Day 06  | Wait For It  |
-| Day 07  |   |
+| Day 07  | Camel Cards  |
 | Day 08  |   |
 | Day 09  |   |
 | Day 10  |   |
