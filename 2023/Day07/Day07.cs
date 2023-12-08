@@ -101,7 +101,7 @@ namespace _2023.Day07
                 {
                     return (int)TypeRank.OnePair;
                 }
-                else if (grouped.Count() == 5)
+                else if (grouped.All(r => r.Count == 1))
                 {
                     return (int)TypeRank.HighCard;
                 }
