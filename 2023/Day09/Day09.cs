@@ -63,18 +63,16 @@ namespace _2023.Day09
             // part 2
             if (first)
             {
-                differences.Last().Insert(0, 0);
-                for (int i = differences.Count - 2; i >= 0; i--)
+                for (int i = differences.Count - 1; i >= 0; i--)
                 {
-                    differences[i].Insert(0, differences[i].First() - differences[i + 1].First());
+                    differences[i].Insert(0, differences[i].First() - (i == differences.Count - 1 ? 0 : differences[i + 1].First()));
                 }
                 return differences[0].First();
             }
             // part 1
-            differences.Last().Add(0);
-            for (int i = differences.Count - 2; i >= 0; i--)
+            for (int i = differences.Count - 1; i >= 0; i--)
             {
-                differences[i].Add(differences[i].Last() + differences[i + 1].Last());
+                differences[i].Add(differences[i].Last() + (i == differences.Count - 1 ? 0 : differences[i + 1].Last()));
             }
             return differences[0].Last();
         }
