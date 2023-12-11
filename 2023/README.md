@@ -9,8 +9,8 @@
 | Day 06  | Wait For It  |
 | Day 07  | Camel Cards  |
 | Day 08  | Haunted Wasteland  |
-| Day 09  | Mirage Maintenanc  |
-| Day 10  |   |
+| Day 09  | Mirage Maintenance  |
+| Day 10  | Pipe Maze  |
 | Day 11  |   |
 | Day 12  |   |
 | Day 13  |   |
