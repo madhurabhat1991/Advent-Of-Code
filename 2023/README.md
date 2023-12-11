@@ -11,7 +11,7 @@
 | Day 08  | Haunted Wasteland  |
 | Day 09  | Mirage Maintenance  |
 | Day 10  | Pipe Maze  |
-| Day 11  |   |
+| Day 11  | Cosmic Expansion  |
 | Day 12  |   |
 | Day 13  |   |
 | Day 14  |   |

@@ -361,6 +361,29 @@ namespace Helpers
         }
 
         /// <summary>
+        /// Get all cells equal to given value for a long list
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="value"></param>
+        /// <returns>List<(Cell's value, row, column)></returns>
+        public static List<(T, long, long)> GetCellsEqualToValueLong<T>(this T[,] input, T value)
+        {
+            List<(T, long, long)> cells = new List<(T, long, long)>();
+
+            for (long row = 0; row < input.GetLength(0); row++)
+            {
+                for (long col = 0; col < input.GetLength(1); col++)
+                {
+                    if (EqualityComparer<T>.Default.Equals(input[row, col], value))
+                    {
+                        cells.Add((input[row, col], row, col));
+                    }
+                }
+            }
+            return cells;
+        }
+
+        /// <summary>
         /// Get all cells greater than given value
         /// </summary>
         /// <typeparam name="T"></typeparam>
