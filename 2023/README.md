@@ -12,7 +12,7 @@
 | Day 09  | Mirage Maintenance  |
 | Day 10  | Pipe Maze  |
 | Day 11  | Cosmic Expansion  |
-| Day 12  |   |
+| Day 12  | Hot Springs  |
 | Day 13  |   |
 | Day 14  |   |
 | Day 15  |   |
