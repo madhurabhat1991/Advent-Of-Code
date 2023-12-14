@@ -81,13 +81,13 @@ namespace Helpers
         /// Get list of all rows and cols in a grid
         /// </summary>
         /// <param name="input"></param>
-        /// <returns></returns>
-        public static (Dictionary<long, List<char>>, Dictionary<long, List<char>>) GetRowsAndColsList(this Char[,] input)
+        /// <returns>(Dictionary<rownumber, List<rowchars>>, Dictionary<colnumber, List<colchars>>)</returns>
+        public static (Dictionary<long, List<T>>, Dictionary<long, List<T>>) GetRowsAndColsList<T>(this T[,] input)
         {
-            Dictionary<long, List<char>> rows = new Dictionary<long, List<char>>(), cols = new Dictionary<long, List<char>>();
+            Dictionary<long, List<T>> rows = new Dictionary<long, List<T>>(), cols = new Dictionary<long, List<T>>();
             for (int r = 0; r < input.GetLength(0); r++)
             {
-                List<char> row = new List<char>();
+                List<T> row = new List<T>();
                 for (int c = 0; c < input.GetLength(1); c++)
                 {
                     row.Add(input[r, c]);
@@ -96,7 +96,7 @@ namespace Helpers
             }
             for (int c = 0; c < input.GetLength(1); c++)
             {
-                List<char> col = new List<char>();
+                List<T> col = new List<T>();
                 for (int r = 0; r < input.GetLength(0); r++)
                 {
                     col.Add(input[r, c]);
