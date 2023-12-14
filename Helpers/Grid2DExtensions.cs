@@ -44,6 +44,35 @@ namespace Helpers
         }
 
         /// <summary>
+        /// Get list of all rows and cols in a grid
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static (Dictionary<long, List<char>>, Dictionary<long, List<char>>) GetRowsAndColsList(this Char[,] input)
+        {
+            Dictionary<long, List<char>> rows = new Dictionary<long, List<char>>(), cols = new Dictionary<long, List<char>>();
+            for (int r = 0; r < input.GetLength(0); r++)
+            {
+                List<char> row = new List<char>();
+                for (int c = 0; c < input.GetLength(1); c++)
+                {
+                    row.Add(input[r, c]);
+                }
+                rows.Add(r, row);
+            }
+            for (int c = 0; c < input.GetLength(1); c++)
+            {
+                List<char> col = new List<char>();
+                for (int r = 0; r < input.GetLength(0); r++)
+                {
+                    col.Add(input[r, c]);
+                }
+                cols.Add(c, col);
+            }
+            return (rows, cols);
+        }
+
+        /// <summary>
         /// Add given number of rows to top of the grid
         /// </summary>
         /// <typeparam name="T"></typeparam>

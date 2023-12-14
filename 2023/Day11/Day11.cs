@@ -78,25 +78,8 @@ namespace _2023.Day11
 
         private (HashSet<long>, HashSet<long>) FindRowsAndColsToExpand(char[,] input)
         {
-            Dictionary<long, List<char>> rows = new Dictionary<long, List<char>>(), cols = new Dictionary<long, List<char>>();
-            for (int r = 0; r < input.GetLength(0); r++)
-            {
-                List<char> row = new List<char>();
-                for (int c = 0; c < input.GetLength(1); c++)
-                {
-                    row.Add(input[r, c]);
-                }
-                rows.Add(r, row);
-            }
-            for (int c = 0; c < input.GetLength(1); c++)
-            {
-                List<char> col = new List<char>();
-                for (int r = 0; r < input.GetLength(0); r++)
-                {
-                    col.Add(input[r, c]);
-                }
-                cols.Add(c, col);
-            }
+            var rc = input.GetRowsAndColsList();
+            Dictionary<long, List<char>> rows = rc.Item1, cols = rc.Item2;
             var exRows = rows.Where(kvp => !kvp.Value.Any(v => v == '#')).Select(kvp => kvp.Key).ToHashSet();
             var exCols = cols.Where(kvp => !kvp.Value.Any(v => v == '#')).Select(kvp => kvp.Key).ToHashSet();
             return (exRows, exCols);
