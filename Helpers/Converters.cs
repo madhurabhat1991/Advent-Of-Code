@@ -56,5 +56,25 @@ namespace Helpers
         {
             return input.Select(line => Int64.Parse(line)).ToList();
         }
+
+        /// <summary>
+        /// Convert array of characters to a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static String CharArrayToString(this Char[] input)
+        {
+            return new string(input);
+        }
+
+        /// <summary>
+        /// Convert list of characters to a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static String CharListToString(this List<Char> input)
+        {
+            return new string(input.ToArray());
+        }
     }
 }

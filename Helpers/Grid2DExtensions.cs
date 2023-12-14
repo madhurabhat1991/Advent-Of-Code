@@ -8,7 +8,7 @@ namespace Helpers
     public static class Grid2DExtensions
     {
         /// <summary>
-        /// Create 2D array
+        /// Create 2D array using array of rows
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -23,6 +23,40 @@ namespace Helpers
                 }
             }
             return array;
+        }
+
+        /// <summary>
+        /// Create 2D array using array of columns
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static Char[,] CreateGrid2DColumns(this String[] input)
+        {
+            Char[,] array = new Char[input[0].Length, input.Length];
+            for (int col = 0; col < input.Length; col++)
+            {
+                for (int row = 0; row < input[col].Length; row++)
+                {
+                    array[row, col] = input[col][row];
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// Flatten 2D array to a string
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static String FlattenGrid2D<T>(this T[,] input)
+        {
+            string result = "";
+            foreach (var s in input.Cast<T>())
+            {
+                result += s;
+            }
+            return result;
         }
 
         /// <summary>
