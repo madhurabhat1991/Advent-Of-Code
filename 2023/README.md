@@ -15,7 +15,7 @@
 | Day 12  | Hot Springs  |
 | Day 13  | Point of Incidence  |
 | Day 14  | Parabolic Reflector Dish  |
-| Day 15  |   |
+| Day 15  | Lens Library  |
 | Day 16  |   |
 | Day 17  |   |
 | Day 18  |   |
