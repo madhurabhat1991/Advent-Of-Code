@@ -81,17 +81,6 @@ namespace _2023.Day15
         }
     }
 
-    public class Box
-    {
-        public int Number { get; set; }
-        public LinkedList<Lens> Lenses { get; set; }
-        public Box(int number)
-        {
-            this.Number = number;
-            Lenses = new LinkedList<Lens>();
-        }
-    }
-
     public class Lens : IEquatable<Lens>
     {
         public string Name { get; set; }
