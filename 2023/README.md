@@ -17,7 +17,7 @@
 | Day 14  | Parabolic Reflector Dish  |
 | Day 15  | Lens Library  |
 | Day 16  | The Floor Will Be Lava  |
-| Day 17  |   |
+| Day 17  | Clumsy Crucible  |
 | Day 18  |   |
 | Day 19  |   |
 | Day 20  |   |
