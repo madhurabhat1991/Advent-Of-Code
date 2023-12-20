@@ -20,7 +20,7 @@
 | Day 17  | Clumsy Crucible  |
 | Day 18  | Lavaduct Lagoon  |
 | Day 19  | Aplenty  |
-| Day 20  |   |
+| Day 20  | Pulse Propagation  |
 | Day 21  |   |
 | Day 22  |   |
 | Day 23  |   |
