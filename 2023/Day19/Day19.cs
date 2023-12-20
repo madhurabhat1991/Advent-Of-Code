@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace _2023.Day19
 {
-    public class Day19 : Day<(Dictionary<string, string[]>, List<Dictionary<char, int>>), long, long>
+    public class Day19 : Day<(Dictionary<string, string[]>, List<Dictionary<char, int>>), long, UInt64>
     {
         public override string DayNumber { get { return "19"; } }
 
@@ -71,119 +71,104 @@ namespace _2023.Day19
             return sum;
         }
 
-        public override long PartTwo((Dictionary<string, string[]>, List<Dictionary<char, int>>) input)
+        // Concept reference - https://www.reddit.com/r/adventofcode/comments/18lwcw2/2023_day_19_an_equivalent_part_2_example_spoilers/
+        public override UInt64 PartTwo((Dictionary<string, string[]>, List<Dictionary<char, int>>) input)
         {
-            UInt64 combinations = 1;
+            UInt64 combinations = 0;
             var workflows = input.Item1;
-            List<Range> ranges = new List<Range>();
 
             Queue<Range> queue = new Queue<Range>();
             queue.Enqueue(new Range { Rules = workflows["in"].ToList() });
             while (queue.Any())
             {
-                var eval = queue.Dequeue();
-                var rule = eval.Rules[0];
-                Range more = null;
-                if (eval.Rules.Count > 1)
+                var branch = queue.Dequeue();
+                var rule = branch.Rules[0];
+                Range newBranch = null;
+                if (branch.Rules.Count > 1)         // there are more rules that this branch doesn't satisfy
                 {
-                    more = eval.DeepClone();
-                    more.Rules.RemoveAt(0);
+                    newBranch = branch.DeepClone();
+                    newBranch.Rules.RemoveAt(0);    // Rules[0] will be evaluated by branch, rest by newBranch
                 }
-                if (rule.Length == 1 && rule[0] == 'A')
+                if (rule.Length == 1 && rule[0] == 'A')     // accepted
                 {
-                    //combinations *= ((eval.X.Item2 - eval.X.Item1) * (eval.M.Item2 - eval.M.Item1)
-                    //    * (eval.A.Item2 - eval.A.Item1) * (eval.S.Item2 - eval.S.Item1));
-                    ranges.Add(eval);
+                    combinations += ((ulong)(branch.X.Item2 - branch.X.Item1 + 1) * (ulong)(branch.M.Item2 - branch.M.Item1 + 1)
+                        * (ulong)(branch.A.Item2 - branch.A.Item1 + 1) * (ulong)(branch.S.Item2 - branch.S.Item1 + 1));
                     continue;
                 }
-                if (rule.Length == 1 && rule[0] == 'R')
+                if (rule.Length == 1 && rule[0] == 'R')     // rejected
                 {
                     continue;
                 }
                 var operation = rule.Split(new char[] { '<', '>', ':' }, StringSplitOptions.RemoveEmptyEntries);
-                if (operation.Length > 1)
+                if (operation.Length > 1)                   // compare operation
                 {
                     int limit = Int32.Parse(operation[1]);
                     switch (operation[0][0])
                     {
                         case 'x':
-                            if (rule.Contains('<') && limit < eval.X.Item2)
+                            if (rule.Contains('<') && limit - 1 < branch.X.Item2)
                             {
-                                eval.X.Item2 = limit;
-                                if (more != null && limit + 1 > more.X.Item1) { more.X.Item1 = limit + 1; }
+                                branch.X.Item2 = limit - 1;
+                                if (newBranch != null && limit > newBranch.X.Item1) { newBranch.X.Item1 = limit; }
                             }
-                            else if (rule.Contains('>') && limit > eval.X.Item1)
+                            else if (rule.Contains('>') && limit + 1 > branch.X.Item1)
                             {
-                                eval.X.Item1 = limit;
-                                if (more != null && limit - 1 < more.X.Item2) { more.X.Item2 = limit - 1; }
+                                branch.X.Item1 = limit + 1;
+                                if (newBranch != null && limit < newBranch.X.Item2) { newBranch.X.Item2 = limit; }
                             }
                             break;
                         case 'm':
-                            if (rule.Contains('<') && limit < eval.M.Item2)
+                            if (rule.Contains('<') && limit - 1 < branch.M.Item2)
                             {
-                                eval.M.Item2 = limit;
-                                if (more != null && limit + 1 > more.M.Item1) { more.M.Item1 = limit + 1; }
+                                branch.M.Item2 = limit - 1;
+                                if (newBranch != null && limit > newBranch.M.Item1) { newBranch.M.Item1 = limit; }
                             }
-                            else if (rule.Contains('>') && limit > eval.M.Item1)
+                            else if (rule.Contains('>') && limit + 1 > branch.M.Item1)
                             {
-                                eval.M.Item1 = limit;
-                                if (more != null && limit - 1 < more.M.Item2) { more.M.Item2 = limit - 1; }
+                                branch.M.Item1 = limit + 1;
+                                if (newBranch != null && limit < newBranch.M.Item2) { newBranch.M.Item2 = limit; }
                             }
                             break;
                         case 'a':
-                            if (rule.Contains('<') && limit < eval.A.Item2)
+                            if (rule.Contains('<') && limit - 1 < branch.A.Item2)
                             {
-                                eval.A.Item2 = limit;
-                                if (more != null && limit + 1 > more.A.Item1) { more.A.Item1 = limit + 1; }
+                                branch.A.Item2 = limit - 1;
+                                if (newBranch != null && limit > newBranch.A.Item1) { newBranch.A.Item1 = limit; }
                             }
-                            else if (rule.Contains('>') && limit > eval.A.Item1)
+                            else if (rule.Contains('>') && limit + 1 > branch.A.Item1)
                             {
-                                eval.A.Item1 = limit;
-                                if (more != null && limit - 1 < more.A.Item2) { more.A.Item2 = limit - 1; }
+                                branch.A.Item1 = limit + 1;
+                                if (newBranch != null && limit < newBranch.A.Item2) { newBranch.A.Item2 = limit; }
                             }
                             break;
                         case 's':
-                            if (rule.Contains('<') && limit < eval.S.Item2)
+                            if (rule.Contains('<') && limit - 1 < branch.S.Item2)
                             {
-                                eval.S.Item2 = limit;
-                                if (more != null && limit + 1 > more.S.Item1) { more.S.Item1 = limit + 1; }
+                                branch.S.Item2 = limit - 1;
+                                if (newBranch != null && limit > newBranch.S.Item1) { newBranch.S.Item1 = limit; }
                             }
-                            else if (rule.Contains('>') && limit > eval.S.Item1)
+                            else if (rule.Contains('>') && limit + 1 > branch.S.Item1)
                             {
-                                eval.S.Item1 = limit;
-                                if (more != null && limit - 1 < more.S.Item2) { more.S.Item2 = limit - 1; }
+                                branch.S.Item1 = limit + 1;
+                                if (newBranch != null && limit < newBranch.S.Item2) { newBranch.S.Item2 = limit; }
                             }
                             break;
                         default:
                             break;
                     }
-                    eval.Rules = operation[2].Length == 1 ? new List<string>() { operation[2] } : workflows[operation[2]].ToList();
-                    if (more != null)
+                    branch.Rules = operation[2].Length == 1 ? new List<string>() { operation[2] } : workflows[operation[2]].ToList();   // resolve to the next wf/result
+                    if (newBranch != null)
                     {
-                        queue.Enqueue(more);
+                        queue.Enqueue(newBranch);
                     }
                 }
                 else
                 {
-                    eval.Rules = workflows[operation[0]].ToList();
+                    branch.Rules = workflows[operation[0]].ToList();    // new workflow - add its rules
                 }
-                queue.Enqueue(eval);
+                queue.Enqueue(branch);
             }
-
-            List<int> x = new List<int>(), m = new List<int>(), a = new List<int>(), s = new List<int>();
-            ranges.ForEach(r =>
-            {
-                x.AddRange(Enumerable.Range(r.X.Item1, (r.X.Item2 - r.X.Item1 + 1)).ToList());
-                m.AddRange(Enumerable.Range(r.M.Item1, (r.M.Item2 - r.M.Item1 + 1)).ToList());
-                a.AddRange(Enumerable.Range(r.A.Item1, (r.A.Item2 - r.A.Item1 + 1)).ToList());
-                s.AddRange(Enumerable.Range(r.S.Item1, (r.S.Item2 - r.S.Item1 + 1)).ToList());
-            });
-            x = x.Distinct().ToList();
-            m = m.Distinct().ToList();
-            a = a.Distinct().ToList();
-            s = s.Distinct().ToList();
-            combinations = (ulong)x.Count * (ulong)m.Count * (ulong)a.Count * (ulong)s.Count;
-            return 0;
+            return combinations;
         }
 
         public override (Dictionary<string, string[]>, List<Dictionary<char, int>>) ProcessInput(string[] input)
@@ -214,6 +199,7 @@ namespace _2023.Day19
             return (workflows, parts);
         }
     }
+
     [Serializable]
     public class Range
     {
