@@ -22,7 +22,7 @@
 | Day 19  | Aplenty  | Binary tree  |
 | Day 20  | Pulse Propagation  |   |
 | Day 21  | Step Counter  |   |
-| Day 22  |   |   |
+| Day 22  | Sand Slabs  |   |
 | Day 23  |   |   |
 | Day 24  |   |   |
 | Day 25  |   |   |
