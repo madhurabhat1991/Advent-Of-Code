@@ -23,6 +23,6 @@
 | Day 20  | Pulse Propagation  |   |
 | Day 21  | Step Counter  |   |
 | Day 22  | Sand Slabs  |   |
-| Day 23  |   |   |
+| Day 23  | A Long Walk  |   |
 | Day 24  |   |   |
 | Day 25  |   |   |
