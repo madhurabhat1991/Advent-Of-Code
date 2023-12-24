@@ -24,5 +24,5 @@
 | Day 21  | Step Counter  |   |
 | Day 22  | Sand Slabs  |   |
 | Day 23  | A Long Walk  |   |
-| Day 24  |   |   |
+| Day 24  | Never Tell Me The Odds  |   |
 | Day 25  |   |   |
