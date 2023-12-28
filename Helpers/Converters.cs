@@ -18,6 +18,16 @@ namespace Helpers
         }
 
         /// <summary>
+        /// Convert hexadecimal to integer
+        /// </summary>
+        /// <param name="hex"></param>
+        /// <returns></returns>
+        public static Int32 HexToDecimal(this String hex)
+        {
+            return Int32.Parse(hex, System.Globalization.NumberStyles.HexNumber);
+        }
+
+        /// <summary>
         /// Convery binary string to decimal number
         /// </summary>
         /// <param name="binary"></param>
