@@ -37,7 +37,7 @@ namespace _2023.Day18
             for (int l = 0; l < input.Count; l++)
             {
                 var line = input[l].Item3;
-                var turn = DetermineTurn(line);
+                var turn = (char)HexCodes[line[line.Length - 1]];
                 var distance = line.Substring(1, 5).HexToDecimal();
                 switch (turn)
                 {
@@ -59,16 +59,10 @@ namespace _2023.Day18
                 perimeter += distance;
                 corners.Add(trench);
             }
-            // area of irregular polygon using Shoelace formula https://en.wikipedia.org/wiki/Shoelace_formula
-            // 2A = Sum (x1 * yn - xn * y1)
-            long area = 0;
-            for (int i = 0; i < corners.Count - 1; i++)
-            {
-                area += (corners[i].Item1 * corners[i + 1].Item2) - (corners[i + 1].Item1 * corners[i].Item2);
-            }
-            area = Math.Abs(area) / 2;
+            // area of irregular polygon using Shoelace formula : 2A = Sum (x1 * yn - xn * y1)
+            long area = MathExtensions.ShoelaceFormula(corners);
             // find number of points inside area of polygon using Pick's theorem https://en.wikipedia.org/wiki/Pick%27s_theorem
-            // A = i + (b/2) + 1
+            // A = i + (b/2) + 1; Therefore, i = A - (b/2) + 1
             var inside = area - (perimeter / 2) + 1;
             return inside + perimeter;
         }
@@ -179,11 +173,6 @@ namespace _2023.Day18
                 }
             }
             return inside;
-        }
-
-        private char DetermineTurn(string hexCode)
-        {
-            return (char)HexCodes[hexCode[hexCode.Length - 1]];
         }
     }
 }
