@@ -29,20 +29,48 @@ namespace _2023.Day18
 
         public override long PartTwo(List<(char, int, string)> input)
         {
-            // using even/odd rule takes very long time to run
-            //var trench = (0, 0);
-            //Dictionary<(int, int), char> positions = new Dictionary<(int, int), char>();   // Dictionary<(row, col), pipe>
-            //for (int l = 0; l < input.Count; l++)
-            //{
-            //    var line = input[l].Item3;
-            //    var turn = DetermineTurn(line);
-            //    var distance = line.Substring(1, 5).HexToDecimal();
-            //    var nextTurn = l < input.Count - 1 ? DetermineTurn(input[l + 1].Item3) : l == input.Count - 1 ? DetermineTurn(input[0].Item3) : Char.MinValue;
-            //    Dig(turn, distance, nextTurn, ref trench, ref positions);
-            //}
-            //return CalculateCapacity(positions);
-
-            return 0;
+            // using even/odd rule takes very long time to run - need Shoelace formula + Pick's theorem
+            // find corners and perimeter of irregular polygon
+            (long, long) trench = (0, 0);
+            long perimeter = 0;
+            List<(long, long)> corners = new List<(long, long)>();  // List<(x, y)>
+            for (int l = 0; l < input.Count; l++)
+            {
+                var line = input[l].Item3;
+                var turn = DetermineTurn(line);
+                var distance = line.Substring(1, 5).HexToDecimal();
+                switch (turn)
+                {
+                    case (char)Direction.Up:
+                        trench = (trench.Item1, trench.Item2 + distance);
+                        break;
+                    case (char)Direction.Down:
+                        trench = (trench.Item1, trench.Item2 - distance);
+                        break;
+                    case (char)Direction.Right:
+                        trench = (trench.Item1 + distance, trench.Item2);
+                        break;
+                    case (char)Direction.Left:
+                        trench = (trench.Item1 - distance, trench.Item2);
+                        break;
+                    default:
+                        break;
+                }
+                perimeter += distance;
+                corners.Add(trench);
+            }
+            // area of irregular polygon using Shoelace formula https://en.wikipedia.org/wiki/Shoelace_formula
+            // 2A = Sum (x1 * yn - xn * y1)
+            long area = 0;
+            for (int i = 0; i < corners.Count - 1; i++)
+            {
+                area += (corners[i].Item1 * corners[i + 1].Item2) - (corners[i + 1].Item1 * corners[i].Item2);
+            }
+            area = Math.Abs(area) / 2;
+            // find number of points inside area of polygon using Pick's theorem https://en.wikipedia.org/wiki/Pick%27s_theorem
+            // A = i + (b/2) + 1
+            var inside = area - (perimeter / 2) + 1;
+            return inside + perimeter;
         }
 
         public override List<(char, int, string)> ProcessInput(string[] input)

@@ -18,7 +18,7 @@
 | Day 15  | Lens Library  | Linked list, IEquatable  |
 | Day 16  | The Floor Will Be Lava  |   |
 | Day 17  | Clumsy Crucible  |   |
-| Day 18  | Lavaduct Lagoon  |   |
+| Day 18  | Lavaduct Lagoon  | Shoelace formula, Pick's theorem  |
 | Day 19  | Aplenty  | Binary tree  |
 | Day 20  | Pulse Propagation  |   |
 | Day 21  | Step Counter  |   |
