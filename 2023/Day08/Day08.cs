@@ -32,7 +32,7 @@ namespace _2023.Day08
                 var next = start;
                 stepsList.Add(ReachEnd(next, "", input, true));
             }
-            return Calculations.LCM(stepsList);
+            return MathExtensions.LCM(stepsList);
 
             // Bruteforce -- takes long time for input -- cannot work with this
             //List<string> nextList = startList.ToList();

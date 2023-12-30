@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Helpers
 {
-    public static class Calculations
+    public static class MathExtensions
     {
         /// <summary>
         /// Find GCD of 2 numbers
