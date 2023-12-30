@@ -59,5 +59,20 @@ namespace Helpers
             }
             return lcm;
         }
+
+        /// <summary>
+        /// Calculate Taxicab geometry or Manhattan distance
+        /// https://en.wikipedia.org/wiki/Taxicab_geometry
+        /// Manhattan distance between (x1, y1) and (x2, y2) = | x1 - x2 | + | y1 - y2 |
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <returns></returns>
+        public static long ManhattanDistance(long x1, long y1, long x2, long y2)
+        {
+            return (Math.Abs(x1 - x2) + Math.Abs(y1 - y2));
+        }
     }
 }

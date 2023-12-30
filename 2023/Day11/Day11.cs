@@ -98,8 +98,7 @@ namespace _2023.Day11
                 {
                     var second = galaxies[g2];
                     //var shortest = distances.Where(kvp => kvp.Key == (second.Item2, second.Item3)).First().Value.Item1;
-                    // manhattan distance = | x1 - x2 | + | y1 - y2 |
-                    sum += (Math.Abs(first.Item2 - second.Item2) + Math.Abs(first.Item3 - second.Item3));
+                    sum += MathExtensions.ManhattanDistance(first.Item3, first.Item2, second.Item3, second.Item2);  // row = y, col = x
                 }
             }
             return sum;
