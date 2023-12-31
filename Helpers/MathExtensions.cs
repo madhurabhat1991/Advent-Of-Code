@@ -110,14 +110,14 @@ namespace Helpers
         /// <summary>
         /// Calculate area using Pick's theorem
         /// https://en.wikipedia.org/wiki/Pick%27s_theorem
-        /// A = i + (b/2) + 1
+        /// A = i + (b/2) - 1
         /// </summary>
         /// <param name="inside"></param>
         /// <param name="boundry"></param>
         /// <returns></returns>
         public static long PicksTheorem(long inside, long boundry)
         {
-            return inside + (boundry / 2) + 1;
+            return inside + (boundry / 2) - 1;
         }
     }
 }

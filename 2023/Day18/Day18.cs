@@ -62,7 +62,7 @@ namespace _2023.Day18
             // area of irregular polygon using Shoelace formula : 2A = Sum (x1 * yn - xn * y1)
             long area = MathExtensions.ShoelaceFormula(corners);
             // find number of points inside area of polygon using Pick's theorem https://en.wikipedia.org/wiki/Pick%27s_theorem
-            // A = i + (b/2) + 1; Therefore, i = A - (b/2) + 1
+            // A = i + (b/2) - 1; Therefore, i = A - (b/2) + 1
             var inside = area - (perimeter / 2) + 1;
             return inside + perimeter;
         }
