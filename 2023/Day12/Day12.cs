@@ -14,34 +14,12 @@ namespace _2023.Day12
         public override long PartOne(List<(string, List<int>)> input)
         {
             long sum = 0;
-
             foreach (var record in input)
             {
                 var str = record.Item1;
-                var sizes = record.Item2;
-
-                int idx = 0;
-                foreach (var size in sizes)
-                {
-                    var rem = size;
-                    while (rem > 0)
-                    {
-                        if (str[idx] == Operational) { idx++; }
-                        else if (str[idx] == Damaged) { rem--; }
-                        else if (str[idx] == Unknown)
-                        {
-                            // find contiguous '?'
-                            int block = 1;
-                            int b = idx + 1;
-                            while (str[b] != Operational)
-                            {
-
-                            }
-                        }
-                    }
-                }
+                var groups = record.Item2;
+                sum += FindArrangements(str, groups, 0, 0, 0, 1);
             }
-
             return sum;
         }
 
@@ -64,5 +42,17 @@ namespace _2023.Day12
         private readonly char Operational = '.';
         private readonly char Damaged = '#';
         private readonly char Unknown = '?';
+
+        private long FindArrangements(string str, List<int> groups, int index, int group, int amount, int permutations)
+        {
+            if (index == str.Length - 1) { return permutations; }   // end of string
+            if (str[index] == Unknown)
+            {
+                string newStr = str;
+                //newStr[index] = Operational;
+                FindArrangements(newStr, groups, index, group, amount, permutations);
+            }
+            return 0;
+        }
     }
 }
