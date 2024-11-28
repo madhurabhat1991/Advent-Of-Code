@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31605.320
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2021", "2021\2021.csproj", "{3FEFC83E-79C2-4DFC-A622-5A9D203201A8}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,6 +17,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{5ED7CDE0-E48C-43F0-96F1-219B2C83F6FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2023", "2023\2023.csproj", "{30284316-DA37-41A7-BC78-A05A59298966}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2024", "2024\2024.csproj", "{4C838D53-5847-428D-AA75-8310984D5B53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,10 @@ Global
 		{30284316-DA37-41A7-BC78-A05A59298966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30284316-DA37-41A7-BC78-A05A59298966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30284316-DA37-41A7-BC78-A05A59298966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C838D53-5847-428D-AA75-8310984D5B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C838D53-5847-428D-AA75-8310984D5B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C838D53-5847-428D-AA75-8310984D5B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C838D53-5847-428D-AA75-8310984D5B53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
