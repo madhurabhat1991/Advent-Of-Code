@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Template;
 using Helpers;
 
@@ -13,16 +12,16 @@ namespace _2021.Day04
 
         public override long PartOne((List<int>, List<Board>) input)
         {
-            var draws = input.Item1.DeepClone();
-            var boards = input.Item2.DeepClone();
+            var draws = input.Item1;
+            var boards = input.Item2;
 
             return PlayBingo(draws, boards).FirstOrDefault();
         }
 
         public override long PartTwo((List<int>, List<Board>) input)
         {
-            var draws = input.Item1.DeepClone();
-            var boards = input.Item2.DeepClone();
+            var draws = input.Item1;
+            var boards = input.Item2;
 
             return PlayBingo(draws, boards).LastOrDefault();
         }
@@ -98,7 +97,6 @@ namespace _2021.Day04
         }
     }
 
-    [Serializable]
     public class Board
     {
         public int Number;

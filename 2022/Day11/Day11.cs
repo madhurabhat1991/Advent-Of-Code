@@ -13,13 +13,13 @@ namespace _2022.Day11
 
         public override long PartOne(List<Monkey> input)
         {
-            var monkeys = input.DeepClone();
+            var monkeys = input;
             return MonkeyBusiness(monkeys, true);
         }
 
         public override long PartTwo(List<Monkey> input)
         {
-            var monkeys = input.DeepClone();
+            var monkeys = input;
             return MonkeyBusiness(monkeys, false);
         }
 
@@ -97,7 +97,6 @@ namespace _2022.Day11
         }
     }
 
-    [Serializable]
     public class Monkey
     {
         public int Number { get; set; }

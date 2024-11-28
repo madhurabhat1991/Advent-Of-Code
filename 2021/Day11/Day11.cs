@@ -14,7 +14,7 @@ namespace _2021.Day11
         public override long PartOne(int[,] input)
         {
             long flashes = 0;
-            var grid = input.DeepClone();
+            var grid = input;
             for (int step = 1; step <= StepsOne; step++)
             {
                 flashes += OctopusLife(grid);
@@ -26,7 +26,7 @@ namespace _2021.Day11
         public override long PartTwo(int[,] input)
         {
             long steps = 1;
-            var grid = input.DeepClone();
+            var grid = input;
             while (true)
             {
                 long flashes = OctopusLife(grid);

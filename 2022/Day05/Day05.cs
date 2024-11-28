@@ -76,7 +76,7 @@ namespace _2022.Day05
         /// <returns></returns>
         private List<Stack<char>> UseCrateMover((List<Stack<Char>>, List<(int, int, int)>) input, bool isMover9001)
         {
-            var stacks = input.Item1.DeepClone();
+            var stacks = input.Item1;
             var instr = input.Item2;
 
             foreach (var ins in instr)

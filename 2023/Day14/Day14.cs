@@ -13,14 +13,14 @@ namespace _2023.Day14
 
         public override long PartOne(char[,] input)
         {
-            var grid = Tilt(input.DeepClone());
+            var grid = Tilt(input);
             return CalculateLoad(grid);
         }
 
         public override long PartTwo(char[,] input)
         {
             Dictionary<string, (long, string)> gridDict = new Dictionary<string, (long, string)>();     // Dictionary<grid, (load, next grid)>
-            var grid = input.DeepClone();
+            var grid = input;
             string flatGrid = grid.FlattenGrid2D();
             string cycleGrid = "";
             var cycle = 0;

@@ -23,12 +23,22 @@ namespace Template
         /// <summary>
         /// An example of input
         /// </summary>
-        T Example { get; set; }
+        T ExamplePart1 { get; set; }
+
+        /// <summary>
+        /// An example of input
+        /// </summary>
+        T ExamplePart2 { get; set; }
 
         /// <summary>
         /// Real input of problem
         /// </summary>
-        T Input { get; set; }
+        T InputPart1 { get; set; }
+
+        /// <summary>
+        /// Real input of problem
+        /// </summary>
+        T InputPart2 { get; set; }
 
         /// <summary>
         /// Main method
@@ -47,8 +57,10 @@ namespace Template
             var input = inPath.ReadFile();
 
             // Process input
-            Example = ProcessInput(example);
-            Input = ProcessInput(input);
+            ExamplePart1 = ProcessInput(example);
+            ExamplePart2 = ProcessInput(example);
+            InputPart1 = ProcessInput(input);
+            InputPart2 = ProcessInput(input);
 
             // Call and display output, log time taken
             if (!skipPart1)
@@ -57,7 +69,7 @@ namespace Template
                 {
                     Console.WriteLine("Part One Example " + ex);
                     LogTime();
-                    Console.WriteLine(PartOne(Example));
+                    Console.WriteLine(PartOne(ExamplePart1));
                     LogTime();
                     Console.WriteLine();
                 }
@@ -66,7 +78,7 @@ namespace Template
                 {
                     Console.WriteLine("Part One Input");
                     LogTime();
-                    Console.WriteLine(PartOne(Input));
+                    Console.WriteLine(PartOne(InputPart1));
                     LogTime();
                     Console.WriteLine();
                 }
@@ -78,7 +90,7 @@ namespace Template
                 {
                     Console.WriteLine("Part Two Example " + ex);
                     LogTime();
-                    Console.WriteLine(PartTwo(Example));
+                    Console.WriteLine(PartTwo(ExamplePart2));
                     LogTime();
                     Console.WriteLine();
                 }
@@ -87,7 +99,7 @@ namespace Template
                 {
                     Console.WriteLine("Part Two Input");
                     LogTime();
-                    Console.WriteLine(PartTwo(Input));
+                    Console.WriteLine(PartTwo(InputPart2));
                     LogTime();
                     Console.WriteLine();
                 }

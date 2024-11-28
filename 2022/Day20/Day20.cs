@@ -12,7 +12,7 @@ namespace _2022.Day20
 
         public override long PartOne(List<int> input)
         {
-            var decrypt = input.DeepClone();
+            var decrypt = input;
             int shiftIndex = 0;
             for (int i = 0; i < input.Count; i++)
             {

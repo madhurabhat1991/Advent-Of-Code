@@ -13,7 +13,7 @@ namespace _2022.Day14
 
         public override long PartOne((char[,], (int, int)) input)
         {
-            var grid = input.Item1.DeepClone();
+            var grid = input.Item1;
             var srcPoint = input.Item2;
 
            return Cave(ref grid, ref srcPoint, true);
@@ -21,7 +21,7 @@ namespace _2022.Day14
 
         public override long PartTwo((char[,], (int, int)) input)
         {
-            var grid = input.Item1.DeepClone();
+            var grid = input.Item1;
             var srcPoint = input.Item2;
 
             // add 2 extra floors on the bottom

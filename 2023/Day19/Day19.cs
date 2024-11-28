@@ -4,6 +4,7 @@ using System.Text;
 using Template;
 using Helpers;
 using System.Linq;
+using ProtoBuf;
 
 namespace _2023.Day19
 {
@@ -200,14 +201,19 @@ namespace _2023.Day19
         }
     }
 
-    [Serializable]
+    [ProtoContract]
     public class Range
     {
+        [ProtoMember(1)]
         public (int, int) X = (1, 4000);
+        [ProtoMember(2)]
         public (int, int) M = (1, 4000);
+        [ProtoMember(3)]
         public (int, int) A = (1, 4000);
+        [ProtoMember(4)]
         public (int, int) S = (1, 4000);
 
+        [ProtoMember(5)]
         public List<string> Rules { get; set; }
     }
 }

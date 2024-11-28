@@ -39,8 +39,8 @@ namespace _2023.Day12
             return records;
         }
 
-        private readonly char Operational = '.';
-        private readonly char Damaged = '#';
+        //private readonly char Operational = '.';
+        //private readonly char Damaged = '#';
         private readonly char Unknown = '?';
 
         private long FindArrangements(string str, List<int> groups, int index, int group, int amount, int permutations)
