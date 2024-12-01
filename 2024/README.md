@@ -1,7 +1,7 @@
 
 | Day  | Puzzle | Concepts  |
 | ---- | ------ | --------  |
-| Day 01  |   |   |
+| Day 01  | Historian Hysteria  |   |
 | Day 02  |   |   |
 | Day 03  |   |   |
 | Day 04  |   |   |
