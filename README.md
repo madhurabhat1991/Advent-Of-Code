@@ -6,7 +6,7 @@ Solving the puzzles of <a href='https://adventofcode.com/'>Advent of Code</a> us
 
 - IDE: Microsoft Visual Studio
 - Framework: .NET 8
-- Language: C#
+- Language: C#, Python
 
 ## Progress
 
