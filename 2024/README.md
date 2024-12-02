@@ -2,7 +2,7 @@
 | Day  | Puzzle | Concepts  |
 | ---- | ------ | --------  |
 | Day 01  | Historian Hysteria  |   |
-| Day 02  |   |   |
+| Day 02  | Red-Nosed Reports  |   |
 | Day 03  |   |   |
 | Day 04  |   |   |
 | Day 05  |   |   |
