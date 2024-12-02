@@ -31,6 +31,7 @@ Solving the puzzles of <a href='https://adventofcode.com/'>Advent of Code</a> us
   - 2022 - Day 15 onwards
   - 2021 - Day 16, 17, 19, 20, 21, 22, 23, 24, 25
   - 2015 - 2020
+- [ ] Common project for C# and Python per year
 - [x] Upgrade to .NET 8
 - [ ] Use Priority Queue in GridExtensions/Dijkstra instead of SortedSet
 - [ ] Unit tests for Helpers, puzzles
