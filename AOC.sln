@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35521.163 d17.12
+VisualStudioVersion = 17.12.35521.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2021", "2021\2021.csproj", "{3FEFC83E-79C2-4DFC-A622-5A9D203201A8}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -19,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2023", "2023\2023.csproj", "{30284316-DA37-41A7-BC78-A05A59298966}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2024", "2024\2024.csproj", "{4C838D53-5847-428D-AA75-8310984D5B53}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "2024_Python", "2024_Python\2024_Python.pyproj", "{F4D44FBC-BB20-4A8A-948C-ED879DE1684C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,8 @@ Global
 		{4C838D53-5847-428D-AA75-8310984D5B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C838D53-5847-428D-AA75-8310984D5B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C838D53-5847-428D-AA75-8310984D5B53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D44FBC-BB20-4A8A-948C-ED879DE1684C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D44FBC-BB20-4A8A-948C-ED879DE1684C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
