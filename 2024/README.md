@@ -4,7 +4,7 @@
 | Day 01  | Historian Hysteria  |   |
 | Day 02  | Red-Nosed Reports  |   |
 | Day 03  | Mull It Over  |   |
-| Day 04  |   |   |
+| Day 04  | Ceres Search  |   |
 | Day 05  |   |   |
 | Day 06  |   |   |
 | Day 07  |   |   |
