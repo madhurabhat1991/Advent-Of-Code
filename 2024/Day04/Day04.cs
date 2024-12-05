@@ -63,7 +63,7 @@ namespace _2024.Day04
 
         private readonly string XMAS = "XMAS";
 
-        public static bool WordToTop(char[,] input, int r, int c, string searchWord)
+        private static bool WordToTop(char[,] input, int r, int c, string searchWord)
         {
             if (input[r,c] == searchWord[0] && r - searchWord.Length + 1 >= 0)
             {
