@@ -5,7 +5,7 @@
 | Day 02  | Red-Nosed Reports  |   |
 | Day 03  | Mull It Over  |   |
 | Day 04  | Ceres Search  | Word Search  |
-| Day 05  |   |   |
+| Day 05  | Print Queue  |   |
 | Day 06  |   |   |
 | Day 07  |   |   |
 | Day 08  |   |   |
