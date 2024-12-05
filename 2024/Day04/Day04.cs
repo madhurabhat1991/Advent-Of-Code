@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Template;
+﻿using Template;
 using Helpers;
-using System.Text.RegularExpressions;
 
 namespace _2024.Day04
 {
