@@ -699,6 +699,204 @@ namespace Helpers
         }
 
         /// <summary>
+        /// Search for the word from a given cell to top (vertically upwards)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static bool WordToTop(this char[,] input, int r, int c, string searchWord)
+        {
+            if (input[r, c] == searchWord[0] && r - searchWord.Length + 1 >= 0)
+            {
+                for (int i = 1, wr = r; i < searchWord.Length; i++, wr--)
+                {
+                    if (input.GetTopCell(wr, c).Item1 != searchWord[i]) { return false; }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search for the word from a given cell to top right (diagonally upwards and right)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static bool WordToTopRight(this char[,] input, int r, int c, string searchWord)
+        {
+            if (input[r, c] == searchWord[0] && r - searchWord.Length + 1 >= 0 && c + searchWord.Length <= input.GetLength(1))
+            {
+                for (int i = 1, wr = r, wc = c; i < searchWord.Length; i++, wr--, wc++)
+                {
+                    if (input.GetTopRightCell(wr, wc).Item1 != searchWord[i]) { return false; }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search for the word from a given cell to right (horizontally forward)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static bool WordToRight(this char[,] input, int r, int c, string searchWord)
+        {
+            if (input[r, c] == searchWord[0] && c + searchWord.Length <= input.GetLength(1))
+            {
+                for (int i = 1, wc = c; i < searchWord.Length; i++, wc++)
+                {
+                    if (input.GetRightCell(r, wc).Item1 != searchWord[i]) { return false; }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search for the word from a given cell to bottom right (diagonally downwards and right)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static bool WordToBottomRight(this char[,] input, int r, int c, string searchWord)
+        {
+            if (input[r, c] == searchWord[0] && r + searchWord.Length <= input.GetLength(0) && c + searchWord.Length <= input.GetLength(1))
+            {
+                for (int i = 1, wr = r, wc = c; i < searchWord.Length; i++, wr++, wc++)
+                {
+                    if (input.GetBottomRightCell(wr, wc).Item1 != searchWord[i]) { return false; }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search for the word from a given cell to bottom (vertically downwards)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static bool WordToBottom(this char[,] input, int r, int c, string searchWord)
+        {
+            if (input[r, c] == searchWord[0] && r + searchWord.Length <= input.GetLength(0))
+            {
+                for (int i = 1, wr = r; i < searchWord.Length; i++, wr++)
+                {
+                    if (input.GetBottomCell(wr, c).Item1 != searchWord[i]) { return false; }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search for the word from a given cell to bottom left (diagonally downwards and left)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static bool WordToBottomLeft(this char[,] input, int r, int c, string searchWord)
+        {
+            if (input[r, c] == searchWord[0] && r + searchWord.Length <= input.GetLength(0) && c - searchWord.Length + 1 >= 0)
+            {
+                for (int i = 1, wr = r, wc = c; i < searchWord.Length; i++, wr++, wc--)
+                {
+                    if (input.GetBottomLeftCell(wr, wc).Item1 != searchWord[i]) { return false; }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search for the word from a given cell to left (horizontally backwards)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static bool WordToLeft(this char[,] input, int r, int c, string searchWord)
+        {
+            if (input[r, c] == searchWord[0] && c - searchWord.Length + 1 >= 0)
+            {
+                for (int i = 1, wc = c; i < searchWord.Length; i++, wc--)
+                {
+                    if (input.GetLeftCell(r, wc).Item1 != searchWord[i]) { return false; }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search for the word from a given cell to top left (diagonally upwards and left)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static bool WordToTopLeft(this char[,] input, int r, int c, string searchWord)
+        {
+            if (input[r, c] == searchWord[0] && r - searchWord.Length + 1 >= 0 && c - searchWord.Length + 1 >= 0)
+            {
+                for (int i = 1, wr = r, wc = c; i < searchWord.Length; i++, wr--, wc--)
+                {
+                    if (input.GetTopLeftCell(wr, wc).Item1 != searchWord[i]) { return false; }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search for word in given grid and return the count
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="searchWord"></param>
+        /// <returns></returns>
+        public static long WordSearch(this char[,] input, string searchWord)
+        {
+            // scan for first letter and check if there is search word in any of the 8 directions
+            long sum = 0;
+            for (int r = 0; r < input.GetLength(0); r++)        // row
+            {
+                for (int c = 0; c < input.GetLength(1); c++)    // col
+                {
+                    if (input[r, c] == searchWord[0])           // scan for first letter
+                    {
+                        sum += WordToTop(input, r, c, searchWord) ? 1 : 0;          // to top
+                        sum += WordToTopRight(input, r, c, searchWord) ? 1 : 0;     // to top right                        
+                        sum += WordToRight(input, r, c, searchWord) ? 1 : 0;        // to right                        
+                        sum += WordToBottomRight(input, r, c, searchWord) ? 1 : 0;  // to bottom right
+                        sum += WordToBottom(input, r, c, searchWord) ? 1 : 0;       // to bottom                        
+                        sum += WordToBottomLeft(input, r, c, searchWord) ? 1 : 0;   // to bottom left                        
+                        sum += WordToLeft(input, r, c, searchWord) ? 1 : 0;         // to left                        
+                        sum += WordToTopLeft(input, r, c, searchWord) ? 1 : 0;      // to top left
+                    }
+                }
+            }
+            return sum;
+        }
+
+        /// <summary>
         /// Using Dijkstra's algorithm find the shortest distance between start and every node in graph
         /// </summary>
         /// <param name="input"></param>
