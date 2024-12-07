@@ -6,7 +6,7 @@
 | Day 03  | Mull It Over  |   |
 | Day 04  | Ceres Search  | Word Search  |
 | Day 05  | Print Queue  |   |
-| Day 06  |   |   |
+| Day 06  | Guard Gallivant  |   |
 | Day 07  |   |   |
 | Day 08  |   |   |
 | Day 09  |   |   |
