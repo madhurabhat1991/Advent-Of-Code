@@ -79,7 +79,6 @@ namespace _2024.Day08
                             }
                             else { break; }
                         }
-
                     }
                 }
             }
