@@ -7,7 +7,7 @@
 | Day 04  | Ceres Search  | Word Search  |
 | Day 05  | Print Queue  |   |
 | Day 06  | Guard Gallivant  |   |
-| Day 07  |   |   |
+| Day 07  | Bridge Repair  | Func  |
 | Day 08  |   |   |
 | Day 09  |   |   |
 | Day 10  |   |   |

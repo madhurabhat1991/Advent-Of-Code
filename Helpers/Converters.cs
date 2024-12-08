@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 
 namespace Helpers
@@ -65,6 +66,26 @@ namespace Helpers
         public static List<Int64> StringArrayToLongList(this String[] input)
         {
             return input.Select(line => Int64.Parse(line)).ToList();
+        }
+
+        /// <summary>
+        /// Convert each string in an array to ulong list
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static List<UInt64> StringArrayToUlongList(this String[] input)
+        {
+            return input.Select(line => UInt64.Parse(line)).ToList();
+        }
+
+        /// <summary>
+        /// Convert each string in an array to BigInteger list
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static List<BigInteger> StringArrayToBigIntegerList(this String[] input)
+        {
+            return input.Select(line => BigInteger.Parse(line)).ToList();
         }
 
         /// <summary>
