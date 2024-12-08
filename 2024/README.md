@@ -8,7 +8,7 @@
 | Day 05  | Print Queue  |   |
 | Day 06  | Guard Gallivant  |   |
 | Day 07  | Bridge Repair  | Func  |
-| Day 08  |   |   |
+| Day 08  | Resonant Collinearity  |   |
 | Day 09  |   |   |
 | Day 10  |   |   |
 | Day 11  |   |   |
