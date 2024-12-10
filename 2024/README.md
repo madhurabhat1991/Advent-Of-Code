@@ -10,7 +10,7 @@
 | Day 07  | Bridge Repair  | Func  |
 | Day 08  | Resonant Collinearity  |   |
 | Day 09  | Disk Fragmenter  |   |
-| Day 10  |   |   |
+| Day 10  | Hoof It  |   |
 | Day 11  |   |   |
 | Day 12  |   |   |
 | Day 13  |   |   |
