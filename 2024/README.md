@@ -9,7 +9,7 @@
 | Day 06  | Guard Gallivant  |   |
 | Day 07  | Bridge Repair  | Func  |
 | Day 08  | Resonant Collinearity  |   |
-| Day 09  |   |   |
+| Day 09  | Disk Fragmenter  |   |
 | Day 10  |   |   |
 | Day 11  |   |   |
 | Day 12  |   |   |
