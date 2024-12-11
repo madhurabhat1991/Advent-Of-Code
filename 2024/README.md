@@ -11,7 +11,7 @@
 | Day 08  | Resonant Collinearity  |   |
 | Day 09  | Disk Fragmenter  |   |
 | Day 10  | Hoof It  |   |
-| Day 11  |   |   |
+| Day 11  | Plutonian Pebbles  |   |
 | Day 12  |   |   |
 | Day 13  |   |   |
 | Day 14  |   |   |
