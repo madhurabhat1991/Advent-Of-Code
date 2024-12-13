@@ -19,7 +19,8 @@ namespace _2024.Day13
                 var b = machine.Item2;
                 var p = machine.Item3;
                 // you have 2 linear equations. a1x + b1y = p1 and a2x + b2y = p2
-                // solve for y and substitute to find x
+                // pen and paper stuff. x = (p1 - b1y) / a1; y = (p2 - a2 * ((p1 - b1y) / a1)) / b2
+                // solve for y using constants and use y to find x
                 long y = (p.Item2 * a.Item1 - a.Item2 * p.Item1) / (a.Item1 * b.Item2 - a.Item2 * b.Item1);
                 long x = (p.Item1 - b.Item1 * y) / a.Item1;
                 // confirm that the values solve the equations
