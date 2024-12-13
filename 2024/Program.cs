@@ -6,7 +6,7 @@ namespace _2024
     {
         static void Main(string[] args)
         {
-            var challenge = new Day11.Day11();
+            var challenge = new Day12.Day12();
             var ex = "";
 
             challenge.Main(ex);
