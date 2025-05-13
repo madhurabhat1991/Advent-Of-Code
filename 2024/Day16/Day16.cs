@@ -107,7 +107,96 @@ namespace _2024.Day16
 
         public override long PartTwo(char[,] input)
         {
-            throw new NotImplementedException();
+            // Dijkstra, but the cost will be determined by the turns taken - need to turn this into Priority queue when I update to .NET 9 (offers remove)
+            Dictionary<(int, int, char), (long, (int, int, char))> costs = new Dictionary<(int, int, char), (long, (int, int, char))>();
+            HashSet<(int, int, char)> visited = new HashSet<(int, int, char)>();
+            SortedSet<(long, (int, int, char))> queue = new SortedSet<(long, (int, int, char))>();
+
+            // begin with start
+            var sNode = input.GetCellsEqualToValue(Start).First();
+            var start = (sNode.Item2, sNode.Item3, East);
+            queue.Add((0, start));
+            costs.Add(start, (0, start));
+
+            while (queue.Count > 0)
+            {
+                // dequeue and visited
+                var node = queue.First().Item2;
+                queue.RemoveWhere(r => r.Item2 == node);
+                visited.Add(node);
+                // get neighbors with direction
+                List<(char, int, int, char)> neighbors = new List<(char, int, int, char)>();
+                switch (node.Item3)
+                {
+                    case North:
+                        var n = input.GetTopCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, North)); }
+                        n = input.GetRightCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, East)); }
+                        n = input.GetLeftCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, West)); }
+                        break;
+                    case South:
+                        n = input.GetBottomCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, South)); }
+                        n = input.GetRightCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, East)); }
+                        n = input.GetLeftCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, West)); }
+                        break;
+                    case East:
+                        n = input.GetRightCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, East)); }
+                        n = input.GetTopCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, North)); }
+                        n = input.GetBottomCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, South)); }
+                        break;
+                    case West:
+                        n = input.GetLeftCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, West)); }
+                        n = input.GetTopCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, North)); }
+                        n = input.GetBottomCell(node.Item1, node.Item2);
+                        if (n.Item1 == Empty || n.Item1 == End) { neighbors.Add((n.Item1, n.Item2, n.Item3, South)); }
+                        break;
+                }
+                foreach (var neighbor in neighbors)
+                {
+                    // if neighbor is not visited
+                    if (!visited.Contains((neighbor.Item2, neighbor.Item3, neighbor.Item4)))
+                    {
+                        // add or update path cost
+                        long newCost = costs[node].Item1 + (node.Item3 == neighbor.Item4 ? 1 : 1001);
+                        (long, (int, int, char)) value;
+                        if (costs.TryGetValue((neighbor.Item2, neighbor.Item3, neighbor.Item4), out value))
+                        {
+                            if (newCost < value.Item1)
+                            {
+                                value = (newCost, node);
+                            }
+                        }
+                        else
+                        {
+                            value = (newCost, node);
+                        }
+                        costs[(neighbor.Item2, neighbor.Item3, neighbor.Item4)] = value;
+                        // update priority queue
+                        try
+                        {
+                            queue.RemoveWhere(r => r.Item2 == (neighbor.Item2, neighbor.Item3, neighbor.Item4));
+                        }
+                        finally
+                        {
+                            queue.Add((value.Item1, (neighbor.Item2, neighbor.Item3, neighbor.Item4)));
+                        }
+                    }
+                }
+            }
+            // look for end node with least path cost
+            var eNode = input.GetCellsEqualToValue(End).First();
+            var end = (eNode.Item2, eNode.Item3);
+            return costs.Where(r => r.Key.Item1 == end.Item1 && r.Key.Item2 == end.Item2).ToList().Min(r => r.Value).Item1;
         }
 
         public override char[,] ProcessInput(string[] input)
