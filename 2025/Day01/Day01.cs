@@ -57,6 +57,9 @@ namespace _2025.Day01
         private const char right = 'R';
         private const char left = 'L';
 
+        /// <summary>
+        /// Part 1
+        /// </summary>
         private readonly Dictionary<char, Func<long, long, long>> operations = new Dictionary<char, Func<long, long, long>>()
         {
             { right, new Func<long, long, long>(Add) },
@@ -69,6 +72,9 @@ namespace _2025.Day01
         // difference of steps, ensure non-negative result by adding and modulo again
         private static readonly Func<long, long, long> Subtract = (a, b) => ((((a - b) % dials) + dials) % dials);
 
+        /// <summary>
+        /// Part 2
+        /// </summary>
         private readonly Dictionary<char, Func<long, long, (long, long)>> operations2 = new Dictionary<char, Func<long, long, (long, long)>>()
         {
             { right, new Func<long, long, (long, long)>(Add2) },
