@@ -2,7 +2,7 @@
 | Day  | Puzzle | Concepts  |
 | ---- | ------ | --------  |
 | Day 01  | Secret Entrance  | Func, Mod  |
-| Day 02  |   |   |
+| Day 02  |    |   |
 | Day 03  |   |   |
 | Day 04  |   |   |
 | Day 05  |   |   |
