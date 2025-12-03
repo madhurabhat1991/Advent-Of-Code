@@ -3,7 +3,7 @@
 | ---- | ------ | --------  |
 | Day 01  | Secret Entrance  | Func, Mod  |
 | Day 02  | Gift Shop  | String pattern  |
-| Day 03  | Lobby  |   |
+| Day 03  | Lobby  | Sliding window  |
 | Day 04  |   |   |
 | Day 05  |   |   |
 | Day 06  |   |   |
