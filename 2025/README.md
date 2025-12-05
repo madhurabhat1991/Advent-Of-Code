@@ -5,7 +5,7 @@
 | Day 02  | Gift Shop  | String pattern  |
 | Day 03  | Lobby  | Sliding window  |
 | Day 04  | Printing Department  | 2-D array  |
-| Day 05  |   |   |
+| Day 05  | Cafeteria  | Range merging  |
 | Day 06  |   |   |
 | Day 07  |   |   |
 | Day 08  |   |   |
