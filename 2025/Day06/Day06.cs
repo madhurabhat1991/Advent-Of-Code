@@ -58,7 +58,7 @@ namespace _2025.Day06
             // List<(startIndex, endIndex, operator)>
             List<(int, int, char)> pIndices = new List<(int, int, char)>();
             var lastLine = input[input.Length - 1];
-            for (int i = lastLine.Length - 1, j = lastLine.Length - 1, pNum = 1; i >= 0; i--)
+            for (int i = lastLine.Length - 1, j = lastLine.Length - 1; i >= 0; i--)
             {
                 var current = lastLine[i];
                 if (current == Add || current == Multiply)
@@ -66,7 +66,6 @@ namespace _2025.Day06
                     pIndices.Add((i, j, current));
                     j = i - 2;  // go to end of next problem
                     i--;        // go to end of next problem, loop decrements another
-                    pNum++;     // next problem number
                 }
             }
             // perform operation using indices of each problem, accumulate sum
