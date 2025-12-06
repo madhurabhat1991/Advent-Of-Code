@@ -6,7 +6,7 @@
 | Day 03  | Lobby  | Sliding window  |
 | Day 04  | Printing Department  | 2-D array  |
 | Day 05  | Cafeteria  | Range merging  |
-| Day 06  |   |   |
+| Day 06  | Trash Compactor  |   |
 | Day 07  |   |   |
 | Day 08  |   |   |
 | Day 09  |   |   |
