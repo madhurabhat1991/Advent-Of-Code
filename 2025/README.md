@@ -7,7 +7,7 @@
 | Day 04  | Printing Department  | 2-D array  |
 | Day 05  | Cafeteria  | Range merging  |
 | Day 06  | Trash Compactor  |   |
-| Day 07  |   |   |
+| Day 07  | Laboratories  | 2-D array  |
 | Day 08  |   |   |
 | Day 09  |   |   |
 | Day 10  |   |   |
