@@ -16,8 +16,7 @@ namespace _2025.Day07
             var start = input.GetCellsEqualToValue(Start)[0];
             // beams - Queue<(value, row, col)>
             Queue<(char, int, int)> beams = new Queue<(char, int, int)>();
-            // initial beam position from start downwards
-            beams.Enqueue(input.GetBottomCell(start.Item2, start.Item3));
+            beams.Enqueue(start);
             // splits - HashSet<(^, row, col)>
             HashSet<(char, int, int)> splits = new HashSet<(char, int, int)>();
             while (beams.Count > 0)
