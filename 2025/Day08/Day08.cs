@@ -75,8 +75,6 @@ namespace _2025.Day08
 
             long finalDistance = 0;
             List<Circuit> circuits = new List<Circuit>();
-            HashSet<(int, int, int)> remaining = new HashSet<(int, int, int)>();
-            remaining.UnionWith(input);
             while (true)
             {
                 var pair = distances.Dequeue();
@@ -95,11 +93,8 @@ namespace _2025.Day08
                 circuit.AddConnection(pair.Item1);
                 circuit.AddConnection(pair.Item2);
                 circuits.Add(circuit);
-                // remove newly added from remaining
-                remaining.Remove(pair.Item1);
-                remaining.Remove(pair.Item2);
                 // calculate final distance from wall if nothing is remaining and one big circuit has formed
-                if (circuits.Count == 1 && remaining.Count == 0)
+                if (circuits.Count == 1 && circuits.First().Connections.Count == input.Count)
                 {
                     finalDistance = (long)pair.Item1.Item1 * pair.Item2.Item1;
                     break;
