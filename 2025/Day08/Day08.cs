@@ -11,8 +11,8 @@ namespace _2025.Day08
 
         public override long PartOne(List<(int, int, int)> input)
         {
-            // unique pairs
-            HashSet<((int, int, int), (int, int, int))> pairs = new HashSet<((int, int, int), (int, int, int))>();
+            // unique pairs and sorted distances between them
+            PriorityQueue<((int, int, int), (int, int, int)), double> distances = new PriorityQueue<((int, int, int), (int, int, int)), double>();
             for (int i = 0; i < input.Count - 1; i++)
             {
                 for (int j = i + 1; j < input.Count; j++)
@@ -21,18 +21,11 @@ namespace _2025.Day08
                     var q = (input[j].Item1, input[j].Item2, input[j].Item3);
                     if (p != q)
                     {
-                        pairs.Add(((input[i].Item1, input[i].Item2, input[i].Item3), (input[j].Item1, input[j].Item2, input[j].Item3)));
+                        var pair = ((input[i].Item1, input[i].Item2, input[i].Item3), (input[j].Item1, input[j].Item2, input[j].Item3));
+                        var distance = Math.Sqrt((long)Math.Pow((p.Item1 - q.Item1), 2) + (long)Math.Pow((p.Item2 - q.Item2), 2) + (long)Math.Pow((p.Item3 - q.Item3), 2));
+                        distances.Enqueue(pair, distance);
                     }
                 }
-            }
-            // sorted distances between pairs
-            PriorityQueue<((int, int, int), (int, int, int)), double> distances = new PriorityQueue<((int, int, int), (int, int, int)), double>();
-            foreach (var pair in pairs)
-            {
-                var p = pair.Item1;
-                var q = pair.Item2;
-                var distance = Math.Sqrt((long)Math.Pow((p.Item1 - q.Item1), 2) + (long)Math.Pow((p.Item2 - q.Item2), 2) + (long)Math.Pow((p.Item3 - q.Item3), 2));
-                distances.Enqueue(pair, distance);
             }
 
             //int connections = 10;       // example
@@ -63,8 +56,8 @@ namespace _2025.Day08
 
         public override long PartTwo(List<(int, int, int)> input)
         {
-            // unique pairs
-            HashSet<((int, int, int), (int, int, int))> pairs = new HashSet<((int, int, int), (int, int, int))>();
+            // unique pairs and sorted distances between them
+            PriorityQueue<((int, int, int), (int, int, int)), double> distances = new PriorityQueue<((int, int, int), (int, int, int)), double>();
             for (int i = 0; i < input.Count - 1; i++)
             {
                 for (int j = i + 1; j < input.Count; j++)
@@ -73,18 +66,11 @@ namespace _2025.Day08
                     var q = (input[j].Item1, input[j].Item2, input[j].Item3);
                     if (p != q)
                     {
-                        pairs.Add(((input[i].Item1, input[i].Item2, input[i].Item3), (input[j].Item1, input[j].Item2, input[j].Item3)));
+                        var pair = ((input[i].Item1, input[i].Item2, input[i].Item3), (input[j].Item1, input[j].Item2, input[j].Item3));
+                        var distance = Math.Sqrt((long)Math.Pow((p.Item1 - q.Item1), 2) + (long)Math.Pow((p.Item2 - q.Item2), 2) + (long)Math.Pow((p.Item3 - q.Item3), 2));
+                        distances.Enqueue(pair, distance);
                     }
                 }
-            }
-            // sorted distances between pairs
-            PriorityQueue<((int, int, int), (int, int, int)), double> distances = new PriorityQueue<((int, int, int), (int, int, int)), double>();
-            foreach (var pair in pairs)
-            {
-                var p = pair.Item1;
-                var q = pair.Item2;
-                var distance = Math.Sqrt((long)Math.Pow((p.Item1 - q.Item1), 2) + (long)Math.Pow((p.Item2 - q.Item2), 2) + (long)Math.Pow((p.Item3 - q.Item3), 2));
-                distances.Enqueue(pair, distance);
             }
 
             long finalDistance = 0;
