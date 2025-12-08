@@ -21,7 +21,7 @@ namespace _2025.Day08
                     var q = (input[j].Item1, input[j].Item2, input[j].Item3);
                     if (p != q)
                     {
-                        var pair = ((input[i].Item1, input[i].Item2, input[i].Item3), (input[j].Item1, input[j].Item2, input[j].Item3));
+                        var pair = (p, q);
                         var distance = Math.Sqrt((long)Math.Pow((p.Item1 - q.Item1), 2) + (long)Math.Pow((p.Item2 - q.Item2), 2) + (long)Math.Pow((p.Item3 - q.Item3), 2));
                         distances.Enqueue(pair, distance);
                     }
@@ -66,7 +66,7 @@ namespace _2025.Day08
                     var q = (input[j].Item1, input[j].Item2, input[j].Item3);
                     if (p != q)
                     {
-                        var pair = ((input[i].Item1, input[i].Item2, input[i].Item3), (input[j].Item1, input[j].Item2, input[j].Item3));
+                        var pair = (p, q);
                         var distance = Math.Sqrt((long)Math.Pow((p.Item1 - q.Item1), 2) + (long)Math.Pow((p.Item2 - q.Item2), 2) + (long)Math.Pow((p.Item3 - q.Item3), 2));
                         distances.Enqueue(pair, distance);
                     }
@@ -93,7 +93,7 @@ namespace _2025.Day08
                 circuit.AddConnection(pair.Item1);
                 circuit.AddConnection(pair.Item2);
                 circuits.Add(circuit);
-                // calculate final distance from wall if nothing is remaining and one big circuit has formed
+                // calculate final distance from wall if one big circuit has formed and all junction boxes are connected
                 if (circuits.Count == 1 && circuits.First().Connections.Count == input.Count)
                 {
                     finalDistance = (long)pair.Item1.Item1 * pair.Item2.Item1;
