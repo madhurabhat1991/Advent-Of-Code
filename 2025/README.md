@@ -9,7 +9,7 @@
 | Day 06  | Trash Compactor  |   |
 | Day 07  | Laboratories  | 2-D array  |
 | Day 08  | Playground  |   |
-| Day 09  |   |   |
+| Day 09  | Movie Theater  |   |
 | Day 10  |   |   |
 | Day 11  |   |   |
 | Day 12  |   |   |
