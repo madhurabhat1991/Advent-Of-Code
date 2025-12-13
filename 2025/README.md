@@ -8,8 +8,8 @@
 | Day 05  | Cafeteria  | Range merging  |
 | Day 06  | Trash Compactor  |   |
 | Day 07  | Laboratories  | 2-D array  |
-| Day 08  | Playground  |   |
+| Day 08  | Playground  | PriorityQueue  |
 | Day 09  | Movie Theater  |   |
-| Day 10  | Factory  |   |
-| Day 11  |   |   |
+| Day 10  | Factory  | PriorityQueue  |
+| Day 11  | Reactor  | Depth First Search, Memoization  |
 | Day 12  |   |   |
