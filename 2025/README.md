@@ -12,4 +12,4 @@
 | Day 09  | Movie Theater  |   |
 | Day 10  | Factory  | PriorityQueue  |
 | Day 11  | Reactor  | Depth First Search, Memoization  |
-| Day 12  |   |   |
+| Day 12  | Christmas Tree Farm  |   |

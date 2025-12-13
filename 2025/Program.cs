@@ -6,10 +6,10 @@ namespace _2025
     {
         static void Main(string[] args)
         {
-            var challenge = new Day11.Day11();
-            var ex = "2";
+            var challenge = new Day12.Day12();
+            var ex = "";
 
-            challenge.Main(ex, skipPart1: true);
+            challenge.Main(ex);
         }
     }
 }
